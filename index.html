@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaleteHostel - Find Affordable Student Hostels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #3a86ff;
+            --secondary: #ff006e;
+            --accent: #8338ec;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd166;
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            padding: 60px 0;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(rgba(58, 134, 255, 0.8), rgba(131, 56, 236, 0.8)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .search-bar {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #d9046d;
+        }
+
+        /* Filter Section */
+        .filters {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: -40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--dark);
+            justify-content: space-between;
+        }
+
+        .filter-title i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .filter-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+        }
+
+        .filter-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 25px;
+            transition: background-color 0.3s;
+        }
+
+        .filter-button:hover {
+            background-color: #2563eb;
+        }
+
+        /* Hostel Listings */
+        .listings {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark);
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hostel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .hostel-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hostel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .hostel-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hostel-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .hostel-card:hover .hostel-img img {
+            transform: scale(1.05);
+        }
+
+        .gallery-indicator {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .hostel-info {
+            padding: 20px;
+        }
+
+        .hostel-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .hostel-location {
+            color: #6c757d;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hostel-location i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+
+        .hostel-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .hostel-features span {
+            background-color: #f0f5ff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            color: var(--primary);
+        }
+
+        .hostel-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .hostel-price span {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-weight: 400;
+        }
+
+        .view-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .view-btn:hover {
+            background-color: #2563eb;
+        }
+
+        .whatsapp-btn {
+            display: block;
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+
+        .call-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .call-btn:hover {
+            background-color: #2563eb;
+        }
+
+        /* About Page */
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .about-content h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .about-feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .about-feature i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Contact Page */
+        .contact-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-method {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .contact-method i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .contact-method h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 30px;
+        }
+
+        .close {
+            color: white;
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close:hover {
+            color: #ccc;
+        }
+
+        .hostel-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-main {
+            grid-column: 1 / -1;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-thumbnail {
+            height: 100px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .gallery-thumbnail:hover {
+            opacity: 1;
+        }
+
+        .gallery-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hostel-details {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ffd166;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #adb5bd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #495057;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .search-bar input {
+                border-radius: 10px 10px 0 0;
+            }
+            
+            .search-bar button {
+                border-radius: 0 0 10px 10px;
+            }
+            
+            .filter-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .hostel-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-main {
+                height: 300px;
+            }
+            
+            .gallery-thumbnails {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .admin-panel h3 {
+            margin-bottom: 20px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .admin-panel h3 i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .admin-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .admin-form input, .admin-form select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .add-hostel-btn {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .add-hostel-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-home"></i>
+                    MaleteHostel
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('hostels')">Hostels</a></li>
+                        <li><a href="#" onclick="showPage('about')">About</a></li>
+                        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Find Your Perfect Student Hostel</h1>
+                <p>Discover affordable, comfortable, and secure private hostels tailored for students across Malete</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search by location, university, or hostel name...">
+                    <button>Search <i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <div class="container">
+            <div class="filters">
+                <div class="filter-title">
+                    <div>
+                        <i class="fas fa-filter"></i>
+                        <h3>Filter Hostels</h3>
+                    </div>
+                    <a href="#" onclick="showPage('hostels')" style="color: var(--primary); text-decoration: none;">
+                        View All Hostels <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="location">Location</label>
+                        <select id="location">
+                            <option value="">All Locations</option>
+                            <option value="school-road">School Road</option>
+                            <option value="westend1">Westend 1</option>
+                            <option value="westend2">Westend 2</option>
+                            <option value="safari">Safari</option>
+                            <option value="dara">Dara Area</option>
+                            <option value="baba-soja">Baba Soja</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="price-range">Price Range</label>
+                        <select id="price-range">
+                            <option value="">Any Price</option>
+                            <option value="0-150">Under ₦150,000</option>
+                            <option value="150-250">₦150,000 - ₦250,000</option>
+                            <option value="250-350">₦250,000 - ₦350,000</option>
+                            <option value="350-500">₦350,000 - ₦500,000</option>
+                            <option value="500+">Over ₦500,000</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="room-type">Room Type</label>
+                        <select id="room-type">
+                            <option value="">Any Room</option>
+                            <option value="single">Single Room</option>
+                            <option value="room-parlor">Room and Parlor</option>
+                            <option value="apartment">Apartment</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="amenities">Amenities</label>
+                        <select id="amenities">
+                            <option value="">Any Amenities</option>
+                            <option value="wifi">Wi-Fi</option>
+                            <option value="laundry">Laundry</option>
+                            <option value="pool">Swimming Pool</option>
+                            <option value="security">24/7 Security</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="filter-button">Apply Filters <i class="fas fa-check"></i></button>
+            </div>
+        </div>
+
+        <!-- Featured Hostel Listings -->
+        <section class="listings">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Featured Hostels</h2>
+                    <p>Discover our most popular student accommodations based on location, amenities, and affordability</p>
+                </div>
+                <div id="featured-hostel-grid" class="hostel-grid">
+                    <!-- Featured hostels will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Hostels Page -->
+    <div id="hostels" class="page-section">
+        <section class="listings">
+            <div class="container">
+                <div class="section-title">
+                    <h2>All Hostels</h2>
+                    <p>Browse through all available hostels in Malete</p>
+                </div>
+                
+                <!-- Filter Section for Hostels Page -->
+                <div class="filters">
+                    <div class="filter-title">
+                        <i class="fas fa-filter"></i>
+                        <h3>Filter Hostels</h3>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-group">
+                            <label for="hostels-location">Location</label>
+                            <select id="hostels-location">
+                                <option value="">All Locations</option>
+                                <option value="school-road">School Road</option>
+                                <option value="westend1">Westend 1</option>
+                                <option value="westend2">Westend 2</option>
+                                <option value="safari">Safari</option>
+                                <option value="dara">Dara Area</option>
+                                <option value="baba-soja">Baba Soja</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="hostels-price-range">Price Range</label>
+                            <select id="hostels-price-range">
+                                <option value="">Any Price</option>
+                                <option value="0-150">Under ₦150,000</option>
+                                <option value="150-250">₦150,000 - ₦250,000</option>
+                                <option value="250-350">₦250,000 - ₦350,000</option>
+                                <option value="350-500">₦350,000 - ₦500,000</option>
+                                <option value="500+">Over ₦500,000</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="hostels-room-type">Room Type</label>
+                            <select id="hostels-room-type">
+                                <option value="">Any Room</option>
+                                <option value="single">Single Room</option>
+                                <option value="room-parlor">Room and Parlor</option>
+                                <option value="apartment">Apartment</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="hostels-amenities">Amenities</label>
+                            <select id="hostels-amenities">
+                                <option value="">Any Amenities</option>
+                                <option value="wifi">Wi-Fi</option>
+                                <option value="laundry">Laundry</option>
+                                <option value="pool">Swimming Pool</option>
+                                <option value="security">24/7 Security</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="filter-button" onclick="filterHostels('hostels')">Apply Filters <i class="fas fa-check"></i></button>
+                </div>
+                
+                <div id="all-hostel-grid" class="hostel-grid">
+                    <!-- All hostels will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page-section">
+        <section class="listings">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About MaleteHostel</h2>
+                    <p>Learn more about our mission and services</p>
+                </div>
+                
+                <div class="about-content">
+                    <p>MaleteHostel is a student-focused platform designed to make finding and securing private hostels in Malete easier, faster, and more affordable.</p>
+                    
+                    <p>We understand how stressful it can be for students—especially those at Kwara State University (KWASU)—to search for accommodation that fits their budget and location needs. That’s why we created MaleteHostel: a one-stop solution where students can browse verified hostel listings, compare prices, and filter options based on what truly matters.</p>
+                    
+                    <p>With MaleteHostel, you can:</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-search"></i>
+                            <h3>Search & Discover</h3>
+                            <p>Explore a wide range of private hostels available in Malete.</p>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-tag"></i>
+                            <h3>Affordable Options</h3>
+                            <p>Find hostels that match your budget, from shared rooms to self-contained apartments.</p>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-filter"></i>
+                            <h3>Filter by Needs</h3>
+                            <p>Narrow down choices by price, location, amenities, and room type.</p>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-heart"></i>
+                            <h3>Save & Collect</h3>
+                            <p>Bookmark your favorite hostels for easy comparison later.</p>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Verified Listings</h3>
+                            <p>Every hostel listed on MaleteHostel is screened to ensure safety and reliability.</p>
+                        </div>
+                    </div>
+                    
+                    <p>Our goal is simple: to help students find the right place to stay without stress.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-section">
+        <section class="listings">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                    <p>Get in touch with us for any inquiries</p>
+                </div>
+                
+                <div class="contact-content">
+                    <p>Have questions about our hostels or need assistance finding accommodation? We're here to help! Reach out to us through any of the following methods:</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fab fa-whatsapp"></i>
+                            <h3>WhatsApp</h3>
+                            <p>+2349135948231</p>
+                            <a href="https://wa.me/2349135948231" class="whatsapp-btn" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Message Us
+                            </a>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <h3>Call Us</h3>
+                            <p>+2349135948231</p>
+                            <a href="tel:+2349135948231" class="call-btn">
+                                <i class="fas fa-phone"></i> Call Now
+                            </a>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <p>info@maletehostel.com</p>
+                            <a href="mailto:info@maletehostel.com" class="view-btn">
+                                <i class="fas fa-envelope"></i> Send Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Admin Panel (Hidden by default) -->
+    <div class="container">
+        <div class="admin-panel" id="admin-panel" style="display: none;">
+            <h3><i class="fas fa-cog"></i> Add New Hostel</h3>
+            <div class="admin-form">
+                <input type="text" id="hostel-name" placeholder="Hostel Name">
+                <input type="text" id="hostel-location" placeholder="Location">
+                <input type="text" id="hostel-price" placeholder="Price (₦)">
+                <input type="text" id="hostel-image" placeholder="Main Image URL">
+                <input type="text" id="hostel-image2" placeholder="Image 2 URL">
+                <input type="text" id="hostel-image3" placeholder="Image 3 URL">
+                <input type="text" id="hostel-image4" placeholder="Image 4 URL">
+                <input type="text" id="hostel-image5" placeholder="Image 5 URL">
+                <select id="hostel-type">
+                    <option value="single">Single Room</option>
+                    <option value="room-parlor">Room and Parlor</option>
+                    <option value="apartment">Apartment</option>
+                </select>
+                <input type="text" id="hostel-features" placeholder="Features (comma separated)">
+                <input type="text" id="hostel-whatsapp" placeholder="WhatsApp Number" value="+2349135948231">
+            </div>
+            <button class="add-hostel-btn" onclick="addHostel()">Add Hostel <i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div id="hostel-gallery" class="hostel-gallery">
+                <div class="gallery-main">
+                    <img id="gallery-main-img" src="" alt="">
+                </div>
+                <div class="gallery-thumbnails" id="gallery-thumbnails">
+                    <!-- Thumbnails will be inserted here -->
+                </div>
+            </div>
+            <div class="hostel-details">
+                <h2 id="modal-hostel-name"></h2>
+                <p id="modal-hostel-location" class="hostel-location"></p>
+                <p id="modal-hostel-price" class="hostel-price"></p>
+                <div id="modal-hostel-features" class="hostel-features"></div>
+                <a id="modal-whatsapp-link" class="whatsapp-btn" href="#" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+                </a>
+                <a id="modal-call-link" class="call-btn" href="#">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MaleteHostel</h3>
+                    <p>Helping students find affordable and comfortable accommodation near campuses nationwide.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/2349135948231" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#" onclick="showPage('home')">Home</a>
+                    <a href="#" onclick="showPage('hostels')">Hostels</a>
+                    <a href="#" onclick="showPage('about')">About Us</a>
+                    <a href="#" onclick="showPage('contact')">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Areas</h3>
+                    <a href="#">School Road</a>
+                    <a href="#">Westend 1</a>
+                    <a href="#">Westend 2</a>
+                    <a href="#">Safari</a>
+                    <a href="#">Dara Area</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 University Road, Malete</p>
+                    <p><i class="fas fa-phone"></i> +2349135948231</p>
+                    <p><i class="fas fa-envelope"></i> info@maletehostel.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 MaleteHostel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hostel data - you can easily add new hostels here
+        const hostelData = [
+            {
+                name: "Campus View Hostel",
+                location: "School Road, 0.5km to University",
+                price: 120000,
+                images: [
+                    "https://images.unsplash.com/photo-1590629430112-2f6892dfc1b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                type: "single",
+                features: ["Wi-Fi", "Security", "Single Room"],
+                whatsapp: "+2349135948231",
+                featured: true
+            },
+            {
+                name: "Green Valley Apartments",
+                location: "Westend 1, 1.2km to University",
+                price: 250000,
+                images: [
+                    "https://images.unsplash.com/photo-1555854871-df562bbf5b51?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                type: "room-parlor",
+                features: ["Kitchen", "Laundry", "Room and Parlor"],
+                whatsapp: "+2349135948231",
+                featured: true
+            },
+            {
+                name: "Student Comfort Hostel",
+                location: "Safari, 0.8km to University",
+                price: 450000,
+                images: [
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                type: "apartment",
+                features: ["Wi-Fi", "Security", "Apartment"],
+                whatsapp: "+2349135948231",
+                featured: true
+            },
+            {
+                name: "Baba Soja Luxury Apartments",
+                location: "Baba Soja, 1.5km to University",
+                price: 380000,
+                images: [
+                    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                type: "apartment",
+                features: ["Wi-Fi", "Security", "Swimming Pool"],
+                whatsapp: "+2349135948231",
+                featured: false
+            }
+        ];
+
+        // Function to display hostels
+        function displayHostels(hostels, gridId) {
+            const hostelGrid = document.getElementById(gridId);
+            hostelGrid.innerHTML = '';
+            
+            hostels.forEach((hostel, index) => {
+                const hostelCard = document.createElement('div');
+                hostelCard.className = 'hostel-card';
+                
+                hostelCard.innerHTML = `
+                    <div class="hostel-img">
+                        <img src="${hostel.images[0]}" alt="${hostel.name}">
+                        <div class="gallery-indicator">5 photos</div>
+                    </div>
+                    <div class="hostel-info">
+                        <h3>${hostel.name}</h3>
+                        <div class="hostel-location">
+                            <i class="fas fa-map-marker-alt"></i> ${hostel.location}
+                        </div>
+                        <div class="hostel-features">
+                            ${hostel.features.map(feature => `<span>${feature}</span>`).join('')}
+                        </div>
+                        <div class="hostel-price">
+                            ₦${hostel.price.toLocaleString()} <span>/year</span>
+                        </div>
+                        <button class="view-btn" onclick="viewHostel(${index})">View Details</button>
+                        <a class="whatsapp-btn" href="https://wa.me/${hostel.whatsapp}?text=Hello, I'm interested in ${hostel.name}" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+                        </a>
+                    </div>
+                `;
+                
+                hostelGrid.appendChild(hostelCard);
+            });
+        }
+
+        // Function to view hostel details
+        function viewHostel(index) {
+            const hostel = hostelData[index];
+            const modal = document.getElementById('gallery-modal');
+            const mainImg = document.getElementById('gallery-main-img');
+            const thumbnailsContainer = document.getElementById('gallery-thumbnails');
+            
+            // Set main image
+            mainImg.src = hostel.images[0];
+            
+            // Set hostel details
+            document.getElementById('modal-hostel-name').textContent = hostel.name;
+            document.getElementById('modal-hostel-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${hostel.location}`;
+            document.getElementById('modal-hostel-price').textContent = `₦${hostel.price.toLocaleString()} /year`;
+            
+            // Set features
+            const featuresContainer = document.getElementById('modal-hostel-features');
+            featuresContainer.innerHTML = hostel.features.map(feature => `<span>${feature}</span>`).join('');
+            
+            // Set WhatsApp link
+            document.getElementById('modal-whatsapp-link').href = `https://wa.me/${hostel.whatsapp}?text=Hello, I'm interested in ${hostel.name}`;
+            
+            // Set call link
+            document.getElementById('modal-call-link').href = `tel:${hostel.whatsapp}`;
+            
+            // Create thumbnails
+            thumbnailsContainer.innerHTML = '';
+            hostel.images.forEach((image, imgIndex) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'gallery-thumbnail';
+                thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${imgIndex + 1}" onclick="changeImage(${imgIndex})">`;
+                thumbnailsContainer.appendChild(thumbnail);
+            });
+            
+            // Show modal
+            modal.style.display = 'block';
+        }
+
+        // Function to change image in gallery
+        function changeImage(index) {
+            const mainImg = document.getElementById('gallery-main-img');
+            const thumbnails = document.querySelectorAll('.gallery-thumbnail img');
+            mainImg.src = thumbnails[index].src;
+        }
+
+        // Function to close modal
+        function closeModal() {
+            document.getElementById('gallery-modal').style.display = 'none';
+        }
+
+        // Function to show a specific page
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // If showing hostels page, display all hostels
+            if (pageId === 'hostels') {
+                displayHostels(hostelData, 'all-hostel-grid');
+            }
+        }
+
+        // Function to add a new hostel
+        function addHostel() {
+            const name = document.getElementById('hostel-name').value;
+            const location = document.getElementById('hostel-location').value;
+            const price = parseInt(document.getElementById('hostel-price').value);
+            const image1 = document.getElementById('hostel-image').value;
+            const image2 = document.getElementById('hostel-image2').value;
+            const image3 = document.getElementById('hostel-image3').value;
+            const image4 = document.getElementById('hostel-image4').value;
+            const image5 = document.getElementById('hostel-image5').value;
+            const type = document.getElementById('hostel-type').value;
+            const features = document.getElementById('hostel-features').value.split(',').map(f => f.trim());
+            const whatsapp = document.getElementById('hostel-whatsapp').value;
+            const featured = confirm("Feature this hostel on the home page?");
+            
+            if (name && location && price && image1) {
+                const newHostel = {
+                    name,
+                    location,
+                    price,
+                    images: [image1, image2, image3, image4, image5].filter(img => img),
+                    type,
+                    features,
+                    whatsapp,
+                    featured
+                };
+                
+                hostelData.push(newHostel);
+                
+                // Update displays
+                displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+                displayHostels(hostelData, 'all-hostel-grid');
+                
+                // Clear the form
+                document.getElementById('hostel-name').value = '';
+                document.getElementById('hostel-location').value = '';
+                document.getElementById('hostel-price').value = '';
+                document.getElementById('hostel-image').value = '';
+                document.getElementById('hostel-image2').value = '';
+                document.getElementById('hostel-image3').value = '';
+                document.getElementById('hostel-image4').value = '';
+                document.getElementById('hostel-image5').value = '';
+                document.getElementById('hostel-features').value = '';
+                
+                alert('Hostel added successfully!');
+            } else {
+                alert('Please fill in all required fields');
+            }
+        }
+
+        // Function to filter hostels
+        function filterHostels(page) {
+            const locationFilter = document.getElementById(`${page}-location`).value;
+            const priceFilter = document.getElementById(`${page}-price-range`).value;
+            const typeFilter = document.getElementById(`${page}-room-type`).value;
+            
+            let filteredHostels = page === 'hostels' ? hostelData : hostelData.filter(h => h.featured);
+            
+            if (locationFilter) {
+                filteredHostels = filteredHostels.filter(hostel => 
+                    hostel.location.toLowerCase().includes(locationFilter));
+            }
+            
+            if (priceFilter) {
+                if (priceFilter === '0-150') {
+                    filteredHostels = filteredHostels.filter(hostel => hostel.price < 150000);
+                } else if (priceFilter === '150-250') {
+                    filteredHostels = filteredHostels.filter(hostel => hostel.price >= 150000 && hostel.price < 250000);
+                } else if (priceFilter === '250-350') {
+                    filteredHostels = filteredHostels.filter(hostel => hostel.price >= 250000 && hostel.price < 350000);
+                } else if (priceFilter === '350-500') {
+                    filteredHostels = filteredHostels.filter(hostel => hostel.price >= 350000 && hostel.price < 500000);
+                } else if (priceFilter === '500+') {
+                    filteredHostels = filteredHostels.filter(hostel => hostel.price >= 500000);
+                }
+            }
+            
+            if (typeFilter) {
+                filteredHostels = filteredHostels.filter(hostel => hostel.type === typeFilter);
+            }
+            
+            displayHostels(filteredHostels, page === 'hostels' ? 'all-hostel-grid' : 'featured-hostel-grid');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Display featured hostels on home page
+            displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+            
+            // Add event listeners for filters
+            document.querySelector('.filter-button').addEventListener('click', () => filterHostels('home'));
+            
+            // Add admin panel toggle (for demonstration)
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.key === 'a') {
+                    e.preventDefault();
+                    const adminPanel = document.getElementById('admin-panel');
+                    adminPanel.style.display = adminPanel.style.display === 'none' ? 'block' : 'none';
+                }
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('gallery-modal');
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
