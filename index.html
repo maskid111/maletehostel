@@ -287,6 +287,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
+            filter: blur(5px);
         }
 
         .hostel-card:hover .hostel-img img {
@@ -306,6 +307,8 @@
 
         .hostel-info {
             padding: 15px;
+            filter: blur(3px);
+            pointer-events: none;
         }
 
         .hostel-info h3 {
@@ -411,6 +414,25 @@
 
         .call-btn:hover {
             background-color: #2563eb;
+        }
+
+        /* Coming Soon Overlay */
+        .coming-soon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         /* About Page */
@@ -619,7 +641,7 @@
             margin-bottom: 8px;
             display: block;
             text-decoration: none;
-            transition: color 极.3s;
+            transition: color 0.3s;
             font-size: 0.85rem;
         }
 
@@ -671,7 +693,7 @@
             }
             
             nav ul li {
-                margin: 5极 8px;
+                margin: 5px 8px;
             }
             
             .hero {
@@ -700,7 +722,7 @@
             }
             
             .hostel-grid {
-                grid-template-columns: repeat(auto-fit, min(250px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
             
             .hostel-gallery {
@@ -830,7 +852,7 @@
             transition: background-color 0.3s;
         }
 
-        .file极upload-label:hover {
+        .file-upload-label:hover {
             background: #e9ecef;
         }
 
@@ -936,7 +958,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-home"></i>
+                    <img src="LOGO1.png" alt="Home" style="width:30px; height:30px;">
                     MaleteHostel
                 </div>
                 <nav>
@@ -1018,6 +1040,7 @@
                             <option value="laundry">Laundry</option>
                             <option value="pool">Swimming Pool</option>
                             <option value="security">24/7 Security</option>
+                            <option value="security">Inverter</option>
                         </select>
                     </div>
                 </div>
@@ -1123,7 +1146,7 @@
                 <div class="about-content">
                     <p>MaleteHostel is a student-focused platform designed to make finding and securing private hostels in Malete easier, faster, and more affordable.</p>
                     
-                    <p>We understand how stressful it can be for students—especially those at Kwara State University (KWASU)—to search for accommodation that fits their budget and location needs. That's why we created MaleteHostel: a one-stop solution where students can browse verified hostel listings, compare prices, and filter options based on what truly matters.</p>
+                    <p>We understand how stressful it can be for students, especially those at Kwara State University (KWASU), to search for accommodation that fits their budget and location needs. That's why we created MaleteHostel: a one stop solution where students can browse verified hostel listings, compare prices, and filter options based on what truly matters.</p>
                     
                     <p>With MaleteHostel, you can:</p>
                     
@@ -1273,7 +1296,7 @@
             <p>Are you sure you want to delete this hostel? This action cannot be undone.</p>
             <div class="delete-modal-buttons">
                 <button class="delete-confirm-btn" onclick="confirmDelete()">Yes, Delete</button>
-                <button class="delete-cancel-btn" onclick="cancelDelete()">Cancel极button>
+                <button class="delete-cancel-btn" onclick="cancelDelete()">Cancel</button>
             </div>
         </div>
     </div>
@@ -1321,7 +1344,7 @@
                 </div>
                 <div class="footer-column">
                     <h3>Contact Info</h3>
-                   <!-- <p><i class="fas fa-map-marker-alt"></i> 123 Unive, Malete</p> -->
+                   <!-- <p><i class="fas fa-map-marker-alt"></i> 123 University Road, Malete</p> -->
                     <p><i class="fas fa-phone"></i> +2349135948231</p>
                     <p><i class="fas fa-envelope"></i> maletehostel@gmail.com</p>
                 </div>
@@ -1342,7 +1365,7 @@
                 images: [
                     "https://images.unsplash.com/photo-1590629430112-2f6892dfc1b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib极rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
                 ],
@@ -1359,7 +1382,7 @@
                     "https://images.unsplash.com/photo-1555854871-df562bbf5b51?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-163极9307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
                 ],
                 type: "room-parlor",
@@ -1388,9 +1411,9 @@
                 location: "Baba Soja, 1.5km to University",
                 price: 380000,
                 images: [
-                    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto极format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1567767292273-0e12e7117极3?ixlib=rb-4.0.3&auto=format&极=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
                 ],
@@ -1460,6 +1483,7 @@
                             <i class="fab fa-whatsapp"></i> Contact via WhatsApp
                         </a>
                     </div>
+                    <div class="coming-soon">Coming Soon</div>
                 `;
                 
                 hostelGrid.appendChild(hostelCard);
@@ -1514,7 +1538,7 @@
             featuresContainer.innerHTML = hostel.features.map(feature => `<span>${feature}</span>`).join('');
             
             // Set WhatsApp link
-            document.getElementById('modal-whatsapp极ink').href = `https://wa.me/${hostel.whatsapp}?text=Hello, I'm interested in ${hostel.name}`;
+            document.getElementById('modal-whatsapp-link').href = `https://wa.me/${hostel.whatsapp}?text=Hello, I'm interested in ${hostel.name}`;
             
             // Set call link
             document.getElementById('modal-call-link').href = `tel:${hostel.whatsapp}`;
@@ -1686,7 +1710,7 @@
                 uploadedImages['hostel-image'] || 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
                 uploadedImages['hostel-image2'] || 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
                 uploadedImages['hostel-image3'] || 'https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                uploadedImages['hostel-image4'] || 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3极auto=format&fit=crop&w=500&q=80',
+                uploadedImages['hostel-image4'] || 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
                 uploadedImages['hostel-image5'] || 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
             ];
             
