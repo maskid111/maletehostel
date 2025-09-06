@@ -1817,11 +1817,18 @@
         // Function to save hostel to Firebase
         async function saveHostelToFirebase(hostel) {
             try {
+                console.log('Attempting to save to Firestore...');
+                console.log('Database object:', db);
+                console.log('Collection reference:', db.collection('hostels'));
+                
                 const docRef = await db.collection('hostels').add(hostel);
                 console.log('Hostel saved to Firebase with ID:', docRef.id);
                 return docRef.id;
             } catch (error) {
-                console.error('Error saving hostel to Firebase:', error);
+                console.error('Detailed Firebase error:', error);
+                console.error('Error code:', error.code);
+                console.error('Error message:', error.message);
+                console.error('Error details:', error.details);
                 throw error;
             }
         }
@@ -2352,6 +2359,46 @@
             }
         }
 
+        // Test Firebase connection and rules
+        async function testFirebaseConnection() {
+            try {
+                console.log('Testing Firebase connection...');
+                const user = firebase.auth().currentUser;
+                console.log('Current user:', user);
+                
+                if (!user) {
+                    throw new Error('No user signed in');
+                }
+                
+                // Test read access
+                console.log('Testing read access...');
+                const testQuery = await db.collection('hostels').limit(1).get();
+                console.log('Read test successful:', testQuery.docs.length, 'documents found');
+                
+                // Test write access with a test document
+                console.log('Testing write access...');
+                const testDoc = {
+                    test: true,
+                    timestamp: new Date().toISOString(),
+                    userId: user.uid
+                };
+                
+                const testRef = await db.collection('test').add(testDoc);
+                console.log('Write test successful, document ID:', testRef.id);
+                
+                // Clean up test document
+                await testRef.delete();
+                console.log('Test document cleaned up');
+                
+                return true;
+            } catch (error) {
+                console.error('Firebase connection test failed:', error);
+                console.error('Error code:', error.code);
+                console.error('Error message:', error.message);
+                return false;
+            }
+        }
+
         // Function to add a new hostel
         async function addHostel() {
             const name = document.getElementById('hostel-name').value;
@@ -2384,36 +2431,69 @@
                 };
                 
                 try {
+                    // Check if user is signed in
+                    const user = firebase.auth().currentUser;
+                    if (!user) {
+                        alert('Please sign in first before adding hostels. Click "Sign In to Add Hostels" button.');
+                        return;
+                    }
+                    
+                    console.log('User is signed in:', user.email);
+                    console.log('Attempting to save hostel:', newHostel);
+                    
+                    // Test Firebase connection first
+                    console.log('Testing Firebase connection...');
+                    const connectionTest = await testFirebaseConnection();
+                    if (!connectionTest) {
+                        alert('Firebase connection test failed. Please check your internet connection and try again.');
+                        return;
+                    }
+                    console.log('Firebase connection test passed!');
+                    
                     // Save to Firebase
                     await saveHostelToFirebase(newHostel);
                 
                     // Reload hostels from Firebase to update the display
                     await loadHostelsFromFirebase();
                 
-                // Clear the form
-                document.getElementById('hostel-name').value = '';
-                document.getElementById('hostel-location').value = '';
-                document.getElementById('hostel-price').value = '';
-                document.getElementById('hostel-features').value = '';
+                    // Clear the form
+                    document.getElementById('hostel-name').value = '';
+                    document.getElementById('hostel-location').value = '';
+                    document.getElementById('hostel-price').value = '';
+                    document.getElementById('hostel-features').value = '';
                     document.getElementById('hostel-youtube').value = '';
                 
-                // Clear image previews
+                    // Clear image previews
                     const previewIds = ['image-preview', 'image-preview2'];
-                previewIds.forEach(id => {
-                    document.getElementById(id).innerHTML = '';
-                });
-                
-                // Reset file inputs
+                    previewIds.forEach(id => {
+                        document.getElementById(id).innerHTML = '';
+                    });
+                    
+                    // Reset file inputs
                     const fileInputs = ['hostel-image', 'hostel-image2'];
-                fileInputs.forEach(id => {
-                    document.getElementById(id).value = '';
-                    uploadedImages[id] = null;
-                });
+                    fileInputs.forEach(id => {
+                        document.getElementById(id).value = '';
+                        uploadedImages[id] = null;
+                    });
                 
                     alert('Hostel added successfully! It will appear on the Hostels page (not the landing page).');
                 } catch (error) {
                     console.error('Error adding hostel:', error);
-                    alert('Error adding hostel. Please check your Firebase configuration and try again.');
+                    console.error('Error details:', error.message);
+                    console.error('Error code:', error.code);
+                    
+                    let errorMessage = 'Error adding hostel. ';
+                    if (error.code === 'permission-denied') {
+                        errorMessage += 'Permission denied. Please make sure you are signed in and have proper permissions.';
+                    } else if (error.code === 'unavailable') {
+                        errorMessage += 'Firebase service is unavailable. Please check your internet connection.';
+                    } else if (error.code === 'unauthenticated') {
+                        errorMessage += 'Please sign in first before adding hostels.';
+                    } else {
+                        errorMessage += `Error: ${error.message}`;
+                    }
+                    
+                    alert(errorMessage);
                 }
             } else {
                 alert('Please fill in all required fields');
