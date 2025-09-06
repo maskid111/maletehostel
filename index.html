@@ -3,8 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MaleteHostel - Find Affordable Student Hostels</title>
+    <title>MaleteHostel - Find Affordable Student Hostels in Malete | KWASU Accommodation</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Find affordable, comfortable, and secure private hostels for students in Malete. Browse verified hostel listings near KWASU with prices, amenities, and contact details.">
+    <meta name="keywords" content="Malete hostels, student accommodation, KWASU hostels, affordable hostels, private hostels, student housing, Malete accommodation, university hostels">
+    <meta name="author" content="MaleteHostel">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="MaleteHostel - Find Affordable Student Hostels in Malete">
+    <meta property="og:description" content="Discover affordable, comfortable, and secure private hostels tailored for students across Malete. Browse verified listings with prices and amenities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://maletehostel.com.ng">
+    <meta property="og:site_name" content="MaleteHostel">
+    <meta property="og:image" content="https://maletehostel.com.ng/LOGO1.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MaleteHostel - Find Affordable Student Hostels in Malete">
+    <meta name="twitter:description" content="Discover affordable, comfortable, and secure private hostels tailored for students across Malete.">
+    <meta name="twitter:image" content="https://maletehostel.com.ng/LOGO1.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://maletehostel.com.ng">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="LOGO1.png">
+    <link rel="apple-touch-icon" href="LOGO1.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <style>
         * {
             margin: 0;
@@ -147,6 +183,33 @@
             background-color: #d9046d;
         }
 
+        .whatsapp-group-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .whatsapp-group-btn:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            color: white;
+        }
+
+        .whatsapp-group-btn i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
         /* Filter Section */
         .filters {
             background-color: white;
@@ -196,6 +259,87 @@
             border-radius: 4px;
             background-color: #f8f9fa;
             font-size: 0.9rem;
+        }
+
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-trigger {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.3s;
+        }
+
+        .dropdown-trigger:hover {
+            border-color: var(--primary);
+        }
+
+        .dropdown-trigger i {
+            transition: transform 0.3s;
+        }
+
+        .dropdown-trigger.active i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--dark);
+            transition: background-color 0.3s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dropdown-checkbox:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-checkbox:hover {
+            background-color: #f0f5ff;
+        }
+
+        .dropdown-checkbox input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+            margin-bottom: 0;
+            transform: scale(1.1);
+        }
+
+        .dropdown-checkbox span {
+            font-weight: 500;
         }
 
         .filter-button {
@@ -255,6 +399,23 @@
         .hostel-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .coming-soon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            min-width: 120px;
         }
 
         .delete-hostel {
@@ -416,24 +577,6 @@
             background-color: #2563eb;
         }
 
-        /* Coming Soon Overlay */
-        .coming-soon {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 4;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
 
         /* About Page */
         .about-content {
@@ -606,6 +749,26 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .gallery-thumbnail.youtube {
+            background: #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .gallery-thumbnail.youtube:hover {
+            background: #cc0000;
+        }
+
+        .gallery-thumbnail.youtube i {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
         }
 
         .hostel-details {
@@ -951,6 +1114,61 @@
             font-weight: 500;
         }
     </style>
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "MaleteHostel",
+        "url": "https://maletehostel.com.ng",
+        "description": "Find affordable, comfortable, and secure private hostels for students in Malete",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://maletehostel.com.ng?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "MaleteHostel",
+            "url": "https://maletehostel.com.ng",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://maletehostel.com.ng/LOGO1.png"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+2349135948231",
+                "contactType": "customer service",
+                "availableLanguage": "English"
+            }
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "MaleteHostel",
+        "description": "Student accommodation platform for finding hostels in Malete",
+        "url": "https://maletehostel.com.ng",
+        "telephone": "+2349135948231",
+        "email": "maletehostel@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Malete",
+            "addressRegion": "Kwara State",
+            "addressCountry": "Nigeria"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": "Malete"
+        },
+        "serviceType": "Student Accommodation",
+        "priceRange": "₦120,000 - ₦500,000"
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -983,6 +1201,11 @@
                 <div class="search-bar">
                     <input type="text" id="search-input" placeholder="Search by location, university, or hostel name...">
                     <button onclick="searchHostels()">Search <i class="fas fa-search"></i></button>
+                </div>
+                <div style="margin-top: 20px;">
+                    <a href="https://chat.whatsapp.com/KpIs8e2PIvdB2hHwWaJv0m?mode=ac_t" class="whatsapp-group-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> JOIN MY WHATSAPP GROUP
+                    </a>
                 </div>
             </div>
         </section>
@@ -1034,17 +1257,40 @@
                     </div>
                     <div class="filter-group">
                         <label for="amenities">Amenities</label>
-                        <select id="amenities">
-                            <option value="">Any Amenities</option>
-                            <option value="wifi">Wi-Fi</option>
-                            <option value="laundry">Laundry</option>
-                            <option value="pool">Swimming Pool</option>
-                            <option value="security">24/7 Security</option>
-                            <option value="security">Inverter</option>
-                        </select>
+                        <div class="custom-dropdown">
+                            <div class="dropdown-trigger" onclick="toggleAmenitiesDropdown()">
+                                <span id="amenities-display">Select Amenities</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="dropdown-content" id="amenities-dropdown">
+                                <label class="dropdown-checkbox">
+                                    <input type="checkbox" value="wifi" class="amenity-checkbox">
+                                    <span>Wi-Fi</span>
+                                </label>
+                                <label class="dropdown-checkbox">
+                                    <input type="checkbox" value="laundry" class="amenity-checkbox">
+                                    <span>Laundry</span>
+                                </label>
+                                <label class="dropdown-checkbox">
+                                    <input type="checkbox" value="pool" class="amenity-checkbox">
+                                    <span>Swimming Pool</span>
+                                </label>
+                                <label class="dropdown-checkbox">
+                                    <input type="checkbox" value="security" class="amenity-checkbox">
+                                    <span>24/7 Security</span>
+                                </label>
+                                <label class="dropdown-checkbox">
+                                    <input type="checkbox" value="inverter" class="amenity-checkbox">
+                                    <span>Inverter</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <button class="filter-button" onclick="filterHostels('home')">Apply Filters <i class="fas fa-check"></i></button>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="filter-button" onclick="filterHostels('home')">Apply Filters <i class="fas fa-check"></i></button>
+                    <button class="filter-button" onclick="clearFilters('home')" style="background-color: #6c757d;">Clear Filters <i class="fas fa-times"></i></button>
+                </div>
             </div>
         </div>
 
@@ -1115,16 +1361,40 @@
                         </div>
                         <div class="filter-group">
                             <label for="hostels-amenities">Amenities</label>
-                            <select id="hostels-amenities">
-                                <option value="">Any Amenities</option>
-                                <option value="wifi">Wi-Fi</option>
-                                <option value="laundry">Laundry</option>
-                                <option value="pool">Swimming Pool</option>
-                                <option value="security">24/7 Security</option>
-                            </select>
+                            <div class="custom-dropdown">
+                                <div class="dropdown-trigger" onclick="toggleHostelsAmenitiesDropdown()">
+                                    <span id="hostels-amenities-display">Select Amenities</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="dropdown-content" id="hostels-amenities-dropdown">
+                                    <label class="dropdown-checkbox">
+                                        <input type="checkbox" value="wifi" class="amenity-checkbox">
+                                        <span>Wi-Fi</span>
+                                    </label>
+                                    <label class="dropdown-checkbox">
+                                        <input type="checkbox" value="laundry" class="amenity-checkbox">
+                                        <span>Laundry</span>
+                                    </label>
+                                    <label class="dropdown-checkbox">
+                                        <input type="checkbox" value="pool" class="amenity-checkbox">
+                                        <span>Swimming Pool</span>
+                                    </label>
+                                    <label class="dropdown-checkbox">
+                                        <input type="checkbox" value="security" class="amenity-checkbox">
+                                        <span>24/7 Security</span>
+                                    </label>
+                                    <label class="dropdown-checkbox">
+                                        <input type="checkbox" value="inverter" class="amenity-checkbox">
+                                        <span>Inverter</span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <button class="filter-button" onclick="filterHostels('hostels')">Apply Filters <i class="fas fa-check"></i></button>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button class="filter-button" onclick="filterHostels('hostels')">Apply Filters <i class="fas fa-check"></i></button>
+                        <button class="filter-button" onclick="clearFilters('hostels')" style="background-color: #6c757d;">Clear Filters <i class="fas fa-times"></i></button>
+                    </div>
                 </div>
                 
                 <div id="all-hostel-grid" class="hostel-grid">
@@ -1222,6 +1492,12 @@
                             </a>
                         </div>
                     </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="https://chat.whatsapp.com/KpIs8e2PIvdB2hHwWaJv0m?mode=ac_t" class="whatsapp-group-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> JOIN OUR WHATSAPP GROUP
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1261,21 +1537,6 @@
                     <div id="image-preview3" class="upload-preview"></div>
                 </div>
                 
-                <div class="file-upload">
-                    <label class="file-upload-label" for="hostel-image4">
-                        <i class="fas fa-upload"></i> Upload Image 4
-                    </label>
-                    <input type="file" id="hostel-image4" class="file-upload-input" accept="image/*" onchange="previewImage(this, 'image-preview4')">
-                    <div id="image-preview4" class="upload-preview"></div>
-                </div>
-                
-                <div class="file-upload">
-                    <label class="file-upload-label" for="hostel-image5">
-                        <i class="fas fa-upload"></i> Upload Image 5
-                    </label>
-                    <input type="file" id="hostel-image5" class="file-upload-input" accept="image/*" onchange="previewImage(this, 'image-preview5')">
-                    <div id="image-preview5" class="upload-preview"></div>
-                </div>
                 
                 <select id="hostel-type">
                     <option value="single">Single Room</option>
@@ -1284,6 +1545,7 @@
                 </select>
                 <input type="text" id="hostel-features" placeholder="Features (comma separated)">
                 <input type="text" id="hostel-whatsapp" placeholder="WhatsApp Number" value="+2349135948231">
+                <input type="text" id="hostel-youtube" placeholder="YouTube Video Link (optional)">
             </div>
             <button class="add-hostel-btn" onclick="addHostel()">Add Hostel <i class="fas fa-plus"></i></button>
         </div>
@@ -1365,10 +1627,9 @@
                 images: [
                     "https://images.unsplash.com/photo-1590629430112-2f6892dfc1b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
                 ],
+                youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
                 type: "single",
                 features: ["Wi-Fi", "Security", "Single Room"],
                 whatsapp: "+2349135948231",
@@ -1381,10 +1642,9 @@
                 images: [
                     "https://images.unsplash.com/photo-1555854871-df562bbf5b51?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
                 ],
+                youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
                 type: "room-parlor",
                 features: ["Kitchen", "Laundry", "Room and Parlor"],
                 whatsapp: "+2349135948231",
@@ -1397,10 +1657,9 @@
                 images: [
                     "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
                 ],
+                youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
                 type: "apartment",
                 features: ["Wi-Fi", "Security", "Apartment"],
                 whatsapp: "+2349135948231",
@@ -1413,16 +1672,30 @@
                 images: [
                     "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                    "https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
                 ],
+                youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
                 type: "apartment",
                 features: ["Wi-Fi", "Security", "Swimming Pool"],
                 whatsapp: "+2349135948231",
                 featured: false
             }
         ];
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA7YWcd2wQJnutWtD0kPJSroDHDZIN_HX8",
+            authDomain: "malete-hostel.firebaseapp.com",
+            projectId: "malete-hostel",
+            storageBucket: "malete-hostel.firebasestorage.app",
+            messagingSenderId: "900139110604",
+            appId: "1:900139110604:web:51fc3f249398c294e67269",
+            measurementId: "G-CZPXYRPYHV"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
         // Store uploaded images
         const uploadedImages = {
@@ -1438,6 +1711,65 @@
         
         // Track admin mode status
         let isAdminMode = false;
+
+        // Firebase hostels (loaded from database)
+        let firebaseHostels = [];
+
+        // Function to load hostels from Firebase
+        async function loadHostelsFromFirebase() {
+            try {
+                const snapshot = await db.collection('hostels').get();
+                firebaseHostels = [];
+                snapshot.forEach(doc => {
+                    const hostel = { id: doc.id, ...doc.data() };
+                    firebaseHostels.push(hostel);
+                });
+                
+                // Combine default hostels with Firebase hostels
+                const allHostels = [...hostelData, ...firebaseHostels];
+                
+                // Update displays
+                // Home page shows only default hostels (not Firebase hostels)
+                displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+                // Hostels page shows all hostels (default + Firebase)
+                displayHostels(allHostels, 'all-hostel-grid');
+                
+                console.log('Total hostels loaded:', allHostels.length);
+                console.log('Firebase hostels:', firebaseHostels.length);
+                console.log('Default hostels:', hostelData.length);
+                
+                console.log('Hostels loaded from Firebase:', firebaseHostels.length);
+            } catch (error) {
+                console.error('Error loading hostels from Firebase:', error);
+                // Fallback to default hostels only
+                displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+                displayHostels(hostelData, 'all-hostel-grid');
+                console.log('Using fallback - default hostels only');
+            }
+        }
+
+        // Function to save hostel to Firebase
+        async function saveHostelToFirebase(hostel) {
+            try {
+                const docRef = await db.collection('hostels').add(hostel);
+                console.log('Hostel saved to Firebase with ID:', docRef.id);
+                return docRef.id;
+            } catch (error) {
+                console.error('Error saving hostel to Firebase:', error);
+                throw error;
+            }
+        }
+
+        // Function to delete hostel from Firebase
+        async function deleteHostelFromFirebase(hostelId) {
+            try {
+                await db.collection('hostels').doc(hostelId).delete();
+                console.log('Hostel deleted from Firebase:', hostelId);
+            } catch (error) {
+                console.error('Error deleting hostel from Firebase:', error);
+                throw error;
+            }
+        }
 
         // Function to display hostels
         function displayHostels(hostels, gridId) {
@@ -1459,13 +1791,18 @@
                 const hostelCard = document.createElement('div');
                 hostelCard.className = 'hostel-card';
                 
+                // Determine if this is a Firebase hostel (has id) or default hostel
+                const isFirebaseHostel = hostel.id !== undefined;
+                const deleteIndex = isFirebaseHostel ? `firebase-${hostel.id}` : `default-${index}`;
+                
                 hostelCard.innerHTML = `
-                    ${isAdminMode ? `<button class="delete-hostel admin-mode" onclick="initiateDelete(${index})">
+                    <div class="coming-soon">Coming Soon</div>
+                    ${isAdminMode ? `<button class="delete-hostel admin-mode" onclick="initiateDelete('${deleteIndex}')">
                         <i class="fas fa-times"></i>
                     </button>` : ''}
                     <div class="hostel-img">
                         <img src="${hostel.images[0]}" alt="${hostel.name}">
-                        <div class="gallery-indicator">5 photos</div>
+                        <div class="gallery-indicator">3 photos + video</div>
                     </div>
                     <div class="hostel-info">
                         <h3>${hostel.name}</h3>
@@ -1478,12 +1815,11 @@
                         <div class="hostel-price">
                             ₦${hostel.price.toLocaleString()} <span>/year</span>
                         </div>
-                        <button class="view-btn" onclick="viewHostel(${index})">View Details</button>
-                        <a class="whatsapp-btn" href="https://wa.me/${hostel.whatsapp}?text=Hello, I'm interested in ${hostel.name}" target="_blank">
+                        <button class="view-btn" onclick="viewHostel('${deleteIndex}')">View Details</button>
+                        <a class="whatsapp-btn" href="https://wa.me/${hostel.whatsapp}?text=Hello! I'm interested in '${hostel.name}' located at '${hostel.location}'. Could you please provide more information about availability?" target="_blank">
                             <i class="fab fa-whatsapp"></i> Contact via WhatsApp
                         </a>
                     </div>
-                    <div class="coming-soon">Coming Soon</div>
                 `;
                 
                 hostelGrid.appendChild(hostelCard);
@@ -1497,18 +1833,37 @@
         }
 
         // Function to confirm deletion
-        function confirmDelete() {
+        async function confirmDelete() {
             if (hostelToDelete !== null) {
-                hostelData.splice(hostelToDelete, 1);
+                try {
+                    if (hostelToDelete.startsWith('firebase-')) {
+                        // Delete from Firebase
+                        const hostelId = hostelToDelete.replace('firebase-', '');
+                        await deleteHostelFromFirebase(hostelId);
+                        
+                        // Remove from local array
+                        firebaseHostels = firebaseHostels.filter(h => h.id !== hostelId);
+                        
+                        // Reload hostels from Firebase
+                        await loadHostelsFromFirebase();
+                    } else if (hostelToDelete.startsWith('default-')) {
+                        // Delete from default hostels (not recommended for production)
+                        const index = parseInt(hostelToDelete.replace('default-', ''));
+                        hostelData.splice(index, 1);
                 
                 // Update displays
-                displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
-                displayHostels(hostelData, 'all-hostel-grid');
+                        const allHostels = [...hostelData, ...firebaseHostels];
+                        displayHostels(allHostels.filter(h => h.featured), 'featured-hostel-grid');
+                        displayHostels(allHostels, 'all-hostel-grid');
+                    }
                 
                 // Hide modal
                 document.getElementById('delete-modal').style.display = 'none';
-                
                 alert('Hostel deleted successfully!');
+                } catch (error) {
+                    console.error('Error deleting hostel:', error);
+                    alert('Error deleting hostel. Please try again.');
+                }
             }
         }
 
@@ -1519,8 +1874,23 @@
         }
 
         // Function to view hostel details
-        function viewHostel(index) {
-            const hostel = hostelData[index];
+        function viewHostel(hostelIndex) {
+            let hostel;
+            
+            // Determine if it's a Firebase or default hostel
+            if (hostelIndex.startsWith('firebase-')) {
+                const hostelId = hostelIndex.replace('firebase-', '');
+                hostel = firebaseHostels.find(h => h.id === hostelId);
+            } else if (hostelIndex.startsWith('default-')) {
+                const index = parseInt(hostelIndex.replace('default-', ''));
+                hostel = hostelData[index];
+            }
+            
+            if (!hostel) {
+                console.error('Hostel not found');
+                return;
+            }
+            
             const modal = document.getElementById('gallery-modal');
             const mainImg = document.getElementById('gallery-main-img');
             const thumbnailsContainer = document.getElementById('gallery-thumbnails');
@@ -1538,19 +1908,30 @@
             featuresContainer.innerHTML = hostel.features.map(feature => `<span>${feature}</span>`).join('');
             
             // Set WhatsApp link
-            document.getElementById('modal-whatsapp-link').href = `https://wa.me/${hostel.whatsapp}?text=Hello, I'm interested in ${hostel.name}`;
+            document.getElementById('modal-whatsapp-link').href = `https://wa.me/${hostel.whatsapp}?text=Hello! I'm interested in '${hostel.name}' located at '${hostel.location}'. Could you please provide more information about availability?`;
             
             // Set call link
             document.getElementById('modal-call-link').href = `tel:${hostel.whatsapp}`;
             
-            // Create thumbnails
+            // Create thumbnails (3 images + 1 YouTube video)
             thumbnailsContainer.innerHTML = '';
+            
+            // Add 3 image thumbnails
             hostel.images.forEach((image, imgIndex) => {
                 const thumbnail = document.createElement('div');
                 thumbnail.className = 'gallery-thumbnail';
                 thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${imgIndex + 1}" onclick="changeImage(${imgIndex})">`;
                 thumbnailsContainer.appendChild(thumbnail);
             });
+            
+            // Add YouTube video thumbnail
+            if (hostel.youtube) {
+                const youtubeThumbnail = document.createElement('div');
+                youtubeThumbnail.className = 'gallery-thumbnail youtube';
+                youtubeThumbnail.innerHTML = `<div><i class="fab fa-youtube"></i><br>Video</div>`;
+                youtubeThumbnail.onclick = () => changeToVideo();
+                thumbnailsContainer.appendChild(youtubeThumbnail);
+            }
             
             // Show modal
             modal.style.display = 'block';
@@ -1560,7 +1941,51 @@
         function changeImage(index) {
             const mainImg = document.getElementById('gallery-main-img');
             const thumbnails = document.querySelectorAll('.gallery-thumbnail img');
-            mainImg.src = thumbnails[index].src;
+            
+            // If currently showing YouTube video, switch back to image
+            if (mainImg.tagName === 'IFRAME') {
+                const hostelName = document.getElementById('modal-hostel-name').textContent;
+                let currentHostel = hostelData.find(h => h.name === hostelName);
+                if (!currentHostel) {
+                    currentHostel = firebaseHostels.find(h => h.name === hostelName);
+                }
+                if (currentHostel && currentHostel.images[index]) {
+                    mainImg.outerHTML = `<img id="gallery-main-img" src="${currentHostel.images[index]}" alt="Hostel Image" style="width: 100%; height: 100%; object-fit: cover;">`;
+                }
+            } else {
+                mainImg.src = thumbnails[index].src;
+            }
+        }
+
+        // Function to change to YouTube video
+        function changeToVideo() {
+            const mainImg = document.getElementById('gallery-main-img');
+            const hostelName = document.getElementById('modal-hostel-name').textContent;
+            
+            // Find the current hostel from both default and Firebase hostels
+            let currentHostel = hostelData.find(h => h.name === hostelName);
+            if (!currentHostel) {
+                currentHostel = firebaseHostels.find(h => h.name === hostelName);
+            }
+            
+            if (currentHostel && currentHostel.youtube) {
+                // Extract video ID from YouTube URL
+                let videoId = '';
+                if (currentHostel.youtube.includes('youtu.be/')) {
+                    videoId = currentHostel.youtube.split('youtu.be/')[1]?.split('?')[0];
+                } else if (currentHostel.youtube.includes('v=')) {
+                    videoId = currentHostel.youtube.split('v=')[1]?.split('&')[0];
+                }
+                
+                if (videoId) {
+                    mainImg.outerHTML = `<iframe id="gallery-main-img" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allowfullscreen style="width: 100%; height: 100%;"></iframe>`;
+                    console.log('YouTube video loaded:', videoId);
+                } else {
+                    console.error('Could not extract video ID from:', currentHostel.youtube);
+                }
+            } else {
+                console.error('No YouTube video found for hostel:', hostelName);
+            }
         }
 
         // Function to close modal
@@ -1581,9 +2006,10 @@
             // Scroll to top
             window.scrollTo(0, 0);
             
-            // If showing hostels page, display all hostels
+            // If showing hostels page, display all hostels (default + Firebase)
             if (pageId === 'hostels') {
-                displayHostels(hostelData, 'all-hostel-grid');
+                const allHostels = [...hostelData, ...firebaseHostels];
+                displayHostels(allHostels, 'all-hostel-grid');
             }
             
             // Hide search results when switching pages
@@ -1621,7 +2047,9 @@
                 return;
             }
             
-            const filteredHostels = hostelData.filter(hostel => 
+            // Combine default and Firebase hostels for search
+            const allHostels = [...hostelData, ...firebaseHostels];
+            const filteredHostels = allHostels.filter(hostel => 
                 hostel.name.toLowerCase().includes(searchTerm) ||
                 hostel.location.toLowerCase().includes(searchTerm) ||
                 hostel.features.some(feature => feature.toLowerCase().includes(searchTerm))
@@ -1638,39 +2066,246 @@
             adminPanel.style.display = 'none';
         }
 
+        // Function to toggle amenities dropdown
+        function toggleAmenitiesDropdown() {
+            const dropdown = document.getElementById('amenities-dropdown');
+            const trigger = document.querySelector('[onclick="toggleAmenitiesDropdown()"]');
+            
+            dropdown.classList.toggle('show');
+            trigger.classList.toggle('active');
+            
+            // Close other dropdowns
+            const hostelsDropdown = document.getElementById('hostels-amenities-dropdown');
+            const hostelsTrigger = document.querySelector('[onclick="toggleHostelsAmenitiesDropdown()"]');
+            if (hostelsDropdown && hostelsDropdown !== dropdown) {
+                hostelsDropdown.classList.remove('show');
+                hostelsTrigger.classList.remove('active');
+            }
+        }
+
+        // Function to toggle hostels amenities dropdown
+        function toggleHostelsAmenitiesDropdown() {
+            const dropdown = document.getElementById('hostels-amenities-dropdown');
+            const trigger = document.querySelector('[onclick="toggleHostelsAmenitiesDropdown()"]');
+            
+            dropdown.classList.toggle('show');
+            trigger.classList.toggle('active');
+            
+            // Close other dropdowns
+            const homeDropdown = document.getElementById('amenities-dropdown');
+            const homeTrigger = document.querySelector('[onclick="toggleAmenitiesDropdown()"]');
+            if (homeDropdown && homeDropdown !== dropdown) {
+                homeDropdown.classList.remove('show');
+                homeTrigger.classList.remove('active');
+            }
+        }
+
+        // Function to update amenities display text
+        function updateAmenitiesDisplay() {
+            const checkboxes = document.querySelectorAll('.amenity-checkbox:checked');
+            const display = document.getElementById('amenities-display');
+            const hostelsDisplay = document.getElementById('hostels-amenities-display');
+            
+            if (checkboxes.length === 0) {
+                if (display) display.textContent = 'Select Amenities';
+                if (hostelsDisplay) hostelsDisplay.textContent = 'Select Amenities';
+            } else if (checkboxes.length === 1) {
+                const text = checkboxes[0].nextElementSibling.textContent;
+                if (display) display.textContent = text;
+                if (hostelsDisplay) hostelsDisplay.textContent = text;
+            } else {
+                const text = `${checkboxes.length} amenities selected`;
+                if (display) display.textContent = text;
+                if (hostelsDisplay) hostelsDisplay.textContent = text;
+            }
+        }
+
         // Function to filter hostels
         function filterHostels(page) {
-            const locationFilter = document.getElementById(page === 'hostels' ? 'hostels-location' : 'location').value;
-            const priceFilter = document.getElementById(page === 'hostels' ? 'hostels-price-range' : 'price-range').value;
-            const typeFilter = document.getElementById(page === 'hostels' ? 'hostels-room-type' : 'room-type').value;
+            console.log('=== FILTERING HOSTELS ===');
             
-            let filteredHostels = page === 'hostels' ? hostelData : hostelData.filter(h => h.featured);
+            // Get filter values
+            const locationSelect = document.getElementById(page === 'hostels' ? 'hostels-location' : 'location');
+            const priceSelect = document.getElementById(page === 'hostels' ? 'hostels-price-range' : 'price-range');
+            const typeSelect = document.getElementById(page === 'hostels' ? 'hostels-room-type' : 'room-type');
             
+            const locationFilter = locationSelect ? locationSelect.value : '';
+            const priceFilter = priceSelect ? priceSelect.value : '';
+            const typeFilter = typeSelect ? typeSelect.value : '';
+            
+            // Get selected amenities from checkboxes
+            const amenityCheckboxes = document.querySelectorAll('.amenity-checkbox:checked');
+            const selectedAmenities = Array.from(amenityCheckboxes).map(cb => cb.value);
+            
+            console.log('Filter values:', {
+                page,
+                locationFilter,
+                priceFilter,
+                typeFilter,
+                selectedAmenities
+            });
+            
+            // Combine default and Firebase hostels
+            const allHostels = [...hostelData, ...firebaseHostels];
+            let filteredHostels = [...allHostels]; // Start with all hostels
+            
+            // For home page, only show featured default hostels
+            if (page !== 'hostels') {
+                filteredHostels = hostelData.filter(h => h.featured);
+            }
+            
+            console.log('Starting with hostels:', filteredHostels.length);
+            
+            // Apply location filter
             if (locationFilter) {
-                filteredHostels = filteredHostels.filter(hostel => 
-                    hostel.location.toLowerCase().includes(locationFilter)
-                );
+                const beforeCount = filteredHostels.length;
+                filteredHostels = filteredHostels.filter(hostel => {
+                    // Map dropdown values to actual location keywords
+                    let locationKeyword = '';
+                    switch(locationFilter) {
+                        case 'school-road':
+                            locationKeyword = 'school road';
+                            break;
+                        case 'westend1':
+                            locationKeyword = 'westend 1';
+                            break;
+                        case 'westend2':
+                            locationKeyword = 'westend 2';
+                            break;
+                        case 'safari':
+                            locationKeyword = 'safari';
+                            break;
+                        case 'dara':
+                            locationKeyword = 'dara';
+                            break;
+                        case 'baba-soja':
+                            locationKeyword = 'baba soja';
+                            break;
+                        default:
+                            locationKeyword = locationFilter;
+                    }
+                    
+                    const match = hostel.location.toLowerCase().includes(locationKeyword);
+                    console.log(`Location: ${hostel.name} - "${hostel.location}" includes "${locationKeyword}" = ${match}`);
+                    return match;
+                });
+                console.log(`Location filter: ${beforeCount} -> ${filteredHostels.length}`);
             }
             
+            // Apply price filter
             if (priceFilter) {
-                if (priceFilter === '0-150') {
-                    filteredHostels = filteredHostels.filter(hostel => hostel.price < 150000);
-                } else if (priceFilter === '150-250') {
-                    filteredHostels = filteredHostels.filter(hostel => hostel.price >= 150000 && hostel.price < 250000);
-                } else if (priceFilter === '250-350') {
-                    filteredHostels = filteredHostels.filter(hostel => hostel.price >= 250000 && hostel.price < 350000);
-                } else if (priceFilter === '350-500') {
-                    filteredHostels = filteredHostels.filter(hostel => hostel.price >= 350000 && hostel.price < 500000);
-                } else if (priceFilter === '500+') {
-                    filteredHostels = filteredHostels.filter(hostel => hostel.price >= 500000);
-                }
+                const beforeCount = filteredHostels.length;
+                filteredHostels = filteredHostels.filter(hostel => {
+                    let match = false;
+                    switch(priceFilter) {
+                        case '0-150':
+                            match = hostel.price < 150000;
+                            break;
+                        case '150-250':
+                            match = hostel.price >= 150000 && hostel.price < 250000;
+                            break;
+                        case '250-350':
+                            match = hostel.price >= 250000 && hostel.price < 350000;
+                            break;
+                        case '350-500':
+                            match = hostel.price >= 350000 && hostel.price < 500000;
+                            break;
+                        case '500+':
+                            match = hostel.price >= 500000;
+                            break;
+                    }
+                    console.log(`Price: ${hostel.name} - ${hostel.price} matches ${priceFilter} = ${match}`);
+                    return match;
+                });
+                console.log(`Price filter: ${beforeCount} -> ${filteredHostels.length}`);
             }
             
+            // Apply room type filter
             if (typeFilter) {
-                filteredHostels = filteredHostels.filter(hostel => hostel.type === typeFilter);
+                const beforeCount = filteredHostels.length;
+                filteredHostels = filteredHostels.filter(hostel => {
+                    const match = hostel.type === typeFilter;
+                    console.log(`Type: ${hostel.name} - ${hostel.type} === ${typeFilter} = ${match}`);
+                    return match;
+                });
+                console.log(`Type filter: ${beforeCount} -> ${filteredHostels.length}`);
             }
             
-            displayHostels(filteredHostels, page === 'hostels' ? 'all-hostel-grid' : 'featured-hostel-grid');
+            // Apply amenities filter
+            if (selectedAmenities.length > 0) {
+                const beforeCount = filteredHostels.length;
+                filteredHostels = filteredHostels.filter(hostel => {
+                    const hasAllAmenities = selectedAmenities.every(amenity => {
+                        // Map checkbox values to actual feature keywords
+                        let featureKeyword = '';
+                        switch(amenity) {
+                            case 'wifi':
+                                featureKeyword = 'wi-fi';
+                                break;
+                            case 'laundry':
+                                featureKeyword = 'laundry';
+                                break;
+                            case 'pool':
+                                featureKeyword = 'swimming pool';
+                                break;
+                            case 'security':
+                                featureKeyword = 'security';
+                                break;
+                            case 'inverter':
+                                featureKeyword = 'inverter';
+                                break;
+                            default:
+                                featureKeyword = amenity;
+                        }
+                        
+                        const hasAmenity = hostel.features.some(feature => 
+                            feature.toLowerCase().includes(featureKeyword)
+                        );
+                        console.log(`Amenity: ${hostel.name} - looking for "${featureKeyword}" in [${hostel.features.join(', ')}] = ${hasAmenity}`);
+                        return hasAmenity;
+                    });
+                    console.log(`All amenities: ${hostel.name} - ${hasAllAmenities}`);
+                    return hasAllAmenities;
+                });
+                console.log(`Amenities filter: ${beforeCount} -> ${filteredHostels.length}`);
+            }
+            
+            console.log(`Final result: ${filteredHostels.length} hostels`);
+            console.log('Filtered hostels:', filteredHostels.map(h => h.name));
+            
+            // Display results
+            const targetGrid = page === 'hostels' ? 'all-hostel-grid' : 'featured-hostel-grid';
+            displayHostels(filteredHostels, targetGrid);
+        }
+
+        // Test function to debug filters
+
+        // Function to clear all filters
+        function clearFilters(page) {
+            // Clear location filter
+            document.getElementById(page === 'hostels' ? 'hostels-location' : 'location').value = '';
+            
+            // Clear price filter
+            document.getElementById(page === 'hostels' ? 'hostels-price-range' : 'price-range').value = '';
+            
+            // Clear room type filter
+            document.getElementById(page === 'hostels' ? 'hostels-room-type' : 'room-type').value = '';
+            
+            // Clear amenities checkboxes
+            document.querySelectorAll('.amenity-checkbox').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Update amenities display
+            updateAmenitiesDisplay();
+            
+            // Reload all hostels
+            const allHostels = [...hostelData, ...firebaseHostels];
+            if (page === 'hostels') {
+                displayHostels(allHostels, 'all-hostel-grid');
+            } else {
+                displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+            }
         }
 
         // Function to preview uploaded images
@@ -1696,22 +2331,21 @@
         }
 
         // Function to add a new hostel
-        function addHostel() {
+        async function addHostel() {
             const name = document.getElementById('hostel-name').value;
             const location = document.getElementById('hostel-location').value;
             const price = parseInt(document.getElementById('hostel-price').value);
             const type = document.getElementById('hostel-type').value;
             const features = document.getElementById('hostel-features').value.split(',').map(f => f.trim());
             const whatsapp = document.getElementById('hostel-whatsapp').value;
-            const featured = confirm("Feature this hostel on the home page?");
+            const youtube = document.getElementById('hostel-youtube').value;
+            const featured = true; // Firebase hostels are featured by default but only show on hostels page
             
-            // Get uploaded images or use placeholder if none uploaded
+            // Get uploaded images or use placeholder if none uploaded (only 3 images now)
             const images = [
                 uploadedImages['hostel-image'] || 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
                 uploadedImages['hostel-image2'] || 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                uploadedImages['hostel-image3'] || 'https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                uploadedImages['hostel-image4'] || 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                uploadedImages['hostel-image5'] || 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+                uploadedImages['hostel-image3'] || 'https://images.unsplash.com/photo-1567767292273-0e12e7117dc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
             ];
             
             if (name && location && price) {
@@ -1720,47 +2354,55 @@
                     location,
                     price,
                     images,
+                    youtube,
                     type,
                     features,
                     whatsapp,
-                    featured
+                    featured,
+                    createdAt: new Date().toISOString()
                 };
                 
-                hostelData.push(newHostel);
+                try {
+                    // Save to Firebase
+                    await saveHostelToFirebase(newHostel);
                 
-                // Update displays
-                displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
-                displayHostels(hostelData, 'all-hostel-grid');
+                    // Reload hostels from Firebase to update the display
+                    await loadHostelsFromFirebase();
                 
                 // Clear the form
                 document.getElementById('hostel-name').value = '';
                 document.getElementById('hostel-location').value = '';
                 document.getElementById('hostel-price').value = '';
                 document.getElementById('hostel-features').value = '';
+                    document.getElementById('hostel-youtube').value = '';
                 
                 // Clear image previews
-                const previewIds = ['image-preview', 'image-preview2', 'image-preview3', 'image-preview4', 'image-preview5'];
+                    const previewIds = ['image-preview', 'image-preview2', 'image-preview3'];
                 previewIds.forEach(id => {
                     document.getElementById(id).innerHTML = '';
                 });
                 
                 // Reset file inputs
-                const fileInputs = ['hostel-image', 'hostel-image2', 'hostel-image3', 'hostel-image4', 'hostel-image5'];
+                    const fileInputs = ['hostel-image', 'hostel-image2', 'hostel-image3'];
                 fileInputs.forEach(id => {
                     document.getElementById(id).value = '';
                     uploadedImages[id] = null;
                 });
                 
-                alert('Hostel added successfully!');
+                    alert('Hostel added successfully! It will appear on the Hostels page (not the landing page).');
+                } catch (error) {
+                    console.error('Error adding hostel:', error);
+                    alert('Error adding hostel. Please check your Firebase configuration and try again.');
+                }
             } else {
                 alert('Please fill in all required fields');
             }
         }
 
         // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Display featured hostels on home page
-            displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Load hostels from Firebase (includes default hostels + Firebase hostels)
+            await loadHostelsFromFirebase();
             
             // Add event listeners for filters
             document.querySelector('.filter-button').addEventListener('click', () => filterHostels('home'));
@@ -1769,6 +2411,13 @@
             document.getElementById('search-input').addEventListener('keyup', (e) => {
                 if (e.key === 'Enter') {
                     searchHostels();
+                }
+            });
+            
+            // Add event listeners for amenity checkboxes
+            document.addEventListener('change', (e) => {
+                if (e.target.classList.contains('amenity-checkbox')) {
+                    updateAmenitiesDisplay();
                 }
             });
             
@@ -1783,9 +2432,18 @@
                 if (e.target === deleteModal) {
                     cancelDelete();
                 }
+                
+                // Close amenities dropdowns when clicking outside
+                if (!e.target.closest('.custom-dropdown')) {
+                    const dropdowns = document.querySelectorAll('.dropdown-content');
+                    const triggers = document.querySelectorAll('.dropdown-trigger');
+                    dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
+                    triggers.forEach(trigger => trigger.classList.remove('active'));
+                }
             });
         });
     </script>
 </body>
 </html>
+
 
