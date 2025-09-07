@@ -1174,6 +1174,81 @@
             opacity: 0.9;
             font-weight: 400;
         }
+
+        /* Filter Toggle Section */
+        .filter-toggle-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+
+        .filter-toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .filter-toggle-btn:hover {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(58, 134, 255, 0.4);
+        }
+
+        .filter-toggle-btn i {
+            font-size: 1.1rem;
+        }
+
+        .filter-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .filter-toggle-btn.active .filter-arrow {
+            transform: rotate(180deg);
+        }
+
+        .view-all-quick {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .view-all-quick:hover {
+            color: var(--accent);
+        }
+
+        .close-filters-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-filters-btn:hover {
+            background: #c82333;
+        }
     </style>
     
     <!-- Structured Data (JSON-LD) -->
@@ -1273,15 +1348,27 @@
 
         <!-- Filter Section -->
         <div class="container">
-            <div class="filters">
+            <!-- Filter Toggle Button -->
+            <div class="filter-toggle-section">
+                <button class="filter-toggle-btn" onclick="toggleFilters()">
+                    <i class="fas fa-filter"></i>
+                    <span>Filter Hostels</span>
+                    <i class="fas fa-chevron-down filter-arrow"></i>
+                </button>
+                <a href="#" onclick="event.preventDefault(); showPage('hostels')" class="view-all-quick">
+                    View All Hostels <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="filters" id="filters-container" style="display: none;">
                 <div class="filter-title">
                     <div>
                         <i class="fas fa-filter"></i>
                         <h3>Filter Hostels</h3>
                     </div>
-                    <a href="#" onclick="showPage('hostels')" style="color: var(--primary); text-decoration: none;">
-                         View All Hostels <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <button class="close-filters-btn" onclick="toggleFilters()">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
                 <div class="filter-options">
                     <div class="filter-group">
@@ -1387,10 +1474,23 @@
                 </div>
                 
                 <!-- Filter Section for Hostels Page -->
-                <div class="filters">
-                    <div class="filter-title">
+                <div class="filter-toggle-section">
+                    <button class="filter-toggle-btn" onclick="toggleHostelsFilters()">
                         <i class="fas fa-filter"></i>
-                        <h3>Filter Hostels</h3>
+                        <span>Filter Hostels</span>
+                        <i class="fas fa-chevron-down filter-arrow"></i>
+                    </button>
+                </div>
+                
+                <div class="filters" id="hostels-filters-container" style="display: none;">
+                    <div class="filter-title">
+                        <div>
+                            <i class="fas fa-filter"></i>
+                            <h3>Filter Hostels</h3>
+                        </div>
+                        <button class="close-filters-btn" onclick="toggleHostelsFilters()">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </div>
                     <div class="filter-options">
                         <div class="filter-group">
@@ -1828,15 +1928,23 @@
         // Function to load hostels from Firebase
         async function loadHostelsFromFirebase() {
             try {
+                console.log('Loading hostels from Firebase...');
                 const snapshot = await db.collection('hostels').get();
                 firebaseHostels = [];
                 snapshot.forEach(doc => {
                     const hostel = { id: doc.id, ...doc.data() };
                     firebaseHostels.push(hostel);
+                    console.log('Loaded Firebase hostel:', hostel.name, 'ID:', hostel.id);
                 });
                 
                 // Combine default hostels with Firebase hostels
                 const allHostels = [...hostelData, ...firebaseHostels];
+                
+                console.log('=== HOSTEL LOADING SUMMARY ===');
+                console.log('Default hostels:', hostelData.length);
+                console.log('Firebase hostels:', firebaseHostels.length);
+                console.log('Total hostels:', allHostels.length);
+                console.log('Firebase hostel names:', firebaseHostels.map(h => h.name));
                 
                 // Update displays
                 // Home page shows only default hostels (not Firebase hostels)
@@ -1844,13 +1952,12 @@
                 // Hostels page shows all hostels (default + Firebase)
                 displayHostels(allHostels, 'all-hostel-grid');
                 
-                console.log('Total hostels loaded:', allHostels.length);
-                console.log('Firebase hostels:', firebaseHostels.length);
-                console.log('Default hostels:', hostelData.length);
+                console.log('Hostels displayed on home page:', hostelData.filter(h => h.featured).length);
+                console.log('Hostels displayed on hostels page:', allHostels.length);
                 
-                console.log('Hostels loaded from Firebase:', firebaseHostels.length);
             } catch (error) {
                 console.error('Error loading hostels from Firebase:', error);
+                console.error('Error details:', error.message);
                 // Fallback to default hostels only
                 displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
                 displayHostels(hostelData, 'all-hostel-grid');
@@ -2087,10 +2194,9 @@
             // Scroll to top
             window.scrollTo(0, 0);
             
-            // If showing hostels page, display all hostels (default + Firebase)
+            // If showing hostels page, reload and display all hostels (default + Firebase)
             if (pageId === 'hostels') {
-                const allHostels = [...hostelData, ...firebaseHostels];
-                displayHostels(allHostels, 'all-hostel-grid');
+                loadHostelsFromFirebase(); // Reload to ensure Firebase hostels are included
             }
             
             // Hide search results when switching pages
@@ -2110,6 +2216,40 @@
                 showPage(hash);
             } else {
                 showPage('home'); // Default to home page
+            }
+        }
+
+        // Function to toggle filters on home page
+        function toggleFilters() {
+            const filtersContainer = document.getElementById('filters-container');
+            const toggleBtn = document.querySelector('.filter-toggle-btn');
+            const arrow = document.querySelector('.filter-arrow');
+            
+            if (filtersContainer.style.display === 'none') {
+                filtersContainer.style.display = 'block';
+                toggleBtn.classList.add('active');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                filtersContainer.style.display = 'none';
+                toggleBtn.classList.remove('active');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Function to toggle filters on hostels page
+        function toggleHostelsFilters() {
+            const filtersContainer = document.getElementById('hostels-filters-container');
+            const toggleBtn = document.querySelector('#hostels .filter-toggle-btn');
+            const arrow = document.querySelector('#hostels .filter-arrow');
+            
+            if (filtersContainer.style.display === 'none') {
+                filtersContainer.style.display = 'block';
+                toggleBtn.classList.add('active');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                filtersContainer.style.display = 'none';
+                toggleBtn.classList.remove('active');
+                arrow.style.transform = 'rotate(0deg)';
             }
         }
 
