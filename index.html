@@ -1136,6 +1136,44 @@
         .btn-secondary:hover {
             background-color: #5a6268;
         }
+
+        /* View All Hostels Link */
+        .view-all-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .view-all-btn:hover {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(58, 134, 255, 0.4);
+            color: white;
+        }
+
+        .view-all-btn i {
+            font-size: 1.1rem;
+        }
+
+        .hostel-count {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
     </style>
     
     <!-- Structured Data (JSON-LD) -->
@@ -1204,10 +1242,10 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="#" onclick="showPage('home')">Home</a></li>
-                        <li><a href="#" onclick="showPage('hostels')">Hostels</a></li>
-                        <li><a href="#" onclick="showPage('about')">About</a></li>
-                        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); showPage('hostels')">Hostels</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); showPage('about')">About</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); showPage('contact')">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -1322,6 +1360,12 @@
                 <div class="section-title">
                     <h2>Featured Hostels</h2>
                     <p>Discover our most popular student accommodations based on location, amenities, and affordability</p>
+                    <div class="view-all-link">
+                        <a href="#hostels" onclick="event.preventDefault(); showPage('hostels')" class="view-all-btn">
+                            <i class="fas fa-list"></i> View All Hostels
+                            <span class="hostel-count">(More options available)</span>
+                        </a>
+                    </div>
                 </div>
                 <div id="featured-hostel-grid" class="hostel-grid">
                     <!-- Featured hostels will be dynamically inserted here -->
@@ -1652,7 +1696,7 @@
                     "APOINT2.jpg",
                     "APOINT2.jpg"
                 ],
-                youtube: "https://youtube.com/shorts/bci8WCAFiI0",
+                youtube: "https://youtube.com/shorts/dBMngEaXWaw",
                 type: "single",
                 features: ["Security", "Single Room"],
                 whatsapp: "+2349135948231",
@@ -2036,6 +2080,10 @@
             // Show the selected page
             document.getElementById(pageId).classList.add('active');
             
+            // Update URL without page reload
+            const newUrl = pageId === 'home' ? window.location.pathname : `${window.location.pathname}#${pageId}`;
+            window.history.pushState({page: pageId}, '', newUrl);
+            
             // Scroll to top
             window.scrollTo(0, 0);
             
@@ -2051,6 +2099,18 @@
             
             // Hide admin panel when switching pages
             document.getElementById('admin-panel').style.display = 'none';
+        }
+
+        // Function to handle URL changes (for direct links)
+        function handleUrlChange() {
+            const hash = window.location.hash.substring(1); // Remove the # symbol
+            const validPages = ['home', 'hostels', 'about', 'contact'];
+            
+            if (hash && validPages.includes(hash)) {
+                showPage(hash);
+            } else {
+                showPage('home'); // Default to home page
+            }
         }
 
         // Function to search hostels
@@ -2505,6 +2565,13 @@
             // Load hostels from Firebase (includes default hostels + Firebase hostels)
             await loadHostelsFromFirebase();
             
+            // Handle initial URL
+            handleUrlChange();
+            
+            // Add event listeners for URL changes
+            window.addEventListener('hashchange', handleUrlChange);
+            window.addEventListener('popstate', handleUrlChange);
+            
             // Add event listeners for filters
             document.querySelector('.filter-button').addEventListener('click', () => filterHostels('home'));
             
@@ -2546,6 +2613,5 @@
     </script>
 </body>
 </html>
-
 
 
