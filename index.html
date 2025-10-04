@@ -1274,7 +1274,7 @@
             },
             "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+2349135948231",
+                "telephone": "+2349071741073",
                 "contactType": "customer service",
                 "availableLanguage": "English"
             }
@@ -1289,8 +1289,8 @@
         "name": "Simi Connect",
         "description": "Student accommodation platform for finding hostels in Malete",
         "url": "https://simiconnect.com.ng",
-        "telephone": "+2349135948231",
-        "email": "simiconnect@gmail.com",
+        "telephone": "+2349071741073",
+        "email": "Olunuga03@gmail.com",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Malete",
@@ -1624,24 +1624,24 @@
                         <div class="contact-method">
                             <i class="fab fa-whatsapp"></i>
                             <h3>WhatsApp</h3>
-                            <p>+2349135948231</p>
-                            <a href="https://wa.me/2349135948231" class="whatsapp-btn" target="_blank">
+                            <p>09071741073</p>
+                            <a href="https://wa.me/2349071741073" class="whatsapp-btn" target="_blank">
                                 <i class="fab fa-whatsapp"></i> Message Us
                             </a>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-phone"></i>
                             <h3>Call Us</h3>
-                            <p>+2349135948231</p>
-                            <a href="tel:+2349135948231" class="call-btn">
+                            <p>080 7347 4302</p>
+                            <a href="tel:+2348073474302" class="call-btn">
                                 <i class="fas fa-phone"></i> Call Now
                             </a>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-envelope"></i>
                             <h3>Email</h3>
-                            <p>simiconnect@gmail.com</p>
-                            <a href="mailto:info@simiconnect.com" class="view-btn">
+                            <p>Olunuga03@gmail.com</p>
+                            <a href="mailto:Olunuga03@gmail.com" class="view-btn">
                                 <i class="fas fa-envelope"></i> Send Email
                             </a>
                         </div>
@@ -1700,7 +1700,7 @@
                     <option value="apartment">Apartment</option>
                 </select>
                 <input type="text" id="hostel-features" placeholder="Features (comma separated)">
-                <input type="text" id="hostel-whatsapp" placeholder="WhatsApp Number" value="+2349135948231">
+                <input type="text" id="hostel-whatsapp" placeholder="WhatsApp Number" value="09071741073">
                 <input type="text" id="hostel-youtube" placeholder="YouTube Video Link (optional)">
             </div>
             <button class="add-hostel-btn admin-only" onclick="addHostel()">Add Hostel <i class="fas fa-plus"></i></button>
@@ -1758,14 +1758,14 @@
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/2349135948231" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/2349071741073" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                    <!-- <p><i class="fas fa-map-marker-alt"></i> 123 University Road, Malete</p> -->
-                    <p><i class="fas fa-phone"></i> +2349135948231</p>
-                    <p><i class="fas fa-envelope"></i> simiconnect@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 080 7347 4302</p>
+                    <p><i class="fas fa-envelope"></i> Olunuga03@gmail.com</p>
                 </div>
             </div>
             <div class="copyright">
@@ -1788,7 +1788,7 @@
                 youtube: "https://youtube.com/shorts/dBMngEaXWaw",
                 type: "single",
                 features: ["Security", "Single Room"],
-                whatsapp: "+2349135948231",
+                whatsapp: "09071741073",
                 featured: true
             },
             {
@@ -1802,7 +1802,7 @@
                 youtube: "https://youtube.com/shorts/dBMngEmXWaw",
                 type: "single",
                 features: ["Single Room"],
-                whatsapp: "+2349135948231",
+                whatsapp: "09071741073",
                 featured: true
             },
             {
@@ -1816,7 +1816,7 @@
                 youtube: "https://youtube.com/shorts/SUqvBofRzjU",
                 type: "single",
                 features: ["Single Room", "POP"],
-                whatsapp: "+2349135948231",
+                whatsapp: "09071741073",
                 featured: true
             }
         ];
@@ -2028,7 +2028,7 @@
                             ₦${hostel.price.toLocaleString()} <span>/year</span>
                         </div>
                         <button class="view-btn" onclick="viewHostel('${deleteIndex}')">View Details</button>
-                        <a class="whatsapp-btn" href="https://wa.me/${hostel.whatsapp}?text=Hello! I'm interested in Hostel located at '${hostel.location}' priced at '₦${hostel.price.toLocaleString()}/year'. Could you please provide more information about availability?" target="_blank">
+                        <a class="whatsapp-btn" href="https://wa.me/${hostel.whatsapp.replace('+234', '234').replace(' ', '')}?text=Hello! I'm interested in Hostel located at '${hostel.location}' priced at '₦${hostel.price.toLocaleString()}/year'. Could you please provide more information about availability?" target="_blank">
                             <i class="fab fa-whatsapp"></i> Contact via WhatsApp
                         </a>
                     </div>
@@ -2120,7 +2120,7 @@
             featuresContainer.innerHTML = hostel.features.map(feature => `<span>${feature}</span>`).join('');
             
             // Set WhatsApp link
-            document.getElementById('modal-whatsapp-link').href = `https://wa.me/${hostel.whatsapp}?text=Hello! I'm interested in Hostel located at '${hostel.location}' priced at '₦${hostel.price.toLocaleString()}/year'. Could you please provide more information about availability?`;
+            document.getElementById('modal-whatsapp-link').href = `https://wa.me/${hostel.whatsapp.replace('+234', '234').replace(' ', '')}?text=Hello! I'm interested in Hostel located at '${hostel.location}' priced at '₦${hostel.price.toLocaleString()}/year'. Could you please provide more information about availability?`;
             
             // Set call link
             document.getElementById('modal-call-link').href = `tel:${hostel.whatsapp}`;
