@@ -6,16 +6,16 @@
     <title>Simi Connect </title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Find affordable, comfortable, and secure private hostels for students in Malete. Browse verified hostel listings near KWASU with prices, amenities, and contact details.">
-    <meta name="keywords" content="Malete hostels, student accommodation, KWASU hostels, affordable hostels, private hostels, student housing, Malete accommodation, university hostels">
+    <meta name="description" content="Find affordable, comfortable, and secure private hostels and stylish student interiors in Malete. Browse verified hostel and interior listings near KWASU with prices, amenities, and contact details.">
+    <meta name="keywords" content="Malete hostels, student accommodation, KWASU hostels, affordable hostels, private hostels, student housing, Malete accommodation, university hostels, student interiors, furniture, decor, Malete interiors">
     <meta name="author" content="Simi Connect">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <meta name="revisit-after" content="7 days">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Simi Connect - Find Affordable Student Hostels in Malete">
-    <meta property="og:description" content="Discover affordable, comfortable, and secure private hostels tailored for students across Malete. Browse verified listings with prices and amenities.">
+    <meta property="og:title" content="Simi Connect - Find Affordable Student Hostels & Interiors in Malete">
+    <meta property="og:description" content="Discover affordable, comfortable, and secure private hostels and stylish interiors tailored for students across Malete. Browse verified listings with prices and amenities.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://simiconnect.com.ng">
     <meta property="og:site_name" content="Simi Connect">
@@ -25,8 +25,8 @@
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Simi Connect - Find Affordable Student Hostels in Malete">
-    <meta name="twitter:description" content="Discover affordable, comfortable, and secure private hostels tailored for students across Malete.">
+    <meta name="twitter:title" content="Simi Connect - Find Affordable Student Hostels & Interiors in Malete">
+    <meta name="twitter:description" content="Discover affordable, comfortable, and secure private hostels and stylish interiors tailored for students across Malete.">
     <meta name="twitter:image" content="https://simiconnect.com.ng/LOGO1.png">
     
     <!-- Canonical URL -->
@@ -359,7 +359,7 @@
             background-color: #8b5a2b;
         }
 
-        /* Hostel Listings */
+        /* Hostel/Interior Listings */
         .listings {
             padding: 40px 0;
         }
@@ -382,13 +382,13 @@
             font-size: 0.95rem;
         }
 
-        .hostel-grid {
+        .hostel-grid, .interior-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
 
-        .hostel-card {
+        .hostel-card, .interior-card {
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
@@ -397,12 +397,12 @@
             position: relative;
         }
 
-        .hostel-card:hover {
+        .hostel-card:hover, .interior-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .delete-hostel {
+        .delete-item {
             position: absolute;
             top: 10px;
             right: 10px;
@@ -417,24 +417,24 @@
             z-index: 5;
         }
 
-        .hostel-card:hover .delete-hostel.admin-mode {
+        .hostel-card:hover .delete-item.admin-mode, .interior-card:hover .delete-item.admin-mode {
             display: block;
         }
 
-        .hostel-img {
+        .hostel-img, .interior-img {
             height: 180px;
             overflow: hidden;
             position: relative;
         }
 
-        .hostel-img img {
+        .hostel-img img, .interior-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
         }
 
-        .hostel-card:hover .hostel-img img {
+        .hostel-card:hover .hostel-img img, .interior-card:hover .interior-img img {
             transform: scale(1.05);
         }
 
@@ -449,17 +449,17 @@
             font-size: 0.75rem;
         }
 
-        .hostel-info {
+        .hostel-info, .interior-info {
             padding: 15px;
         }
 
-        .hostel-info h3 {
+        .hostel-info h3, .interior-info h3 {
             font-size: 1.2rem;
             margin-bottom: 8px;
             color: var(--dark);
         }
 
-        .hostel-location {
+        .hostel-location, .interior-location {
             color: #6c757d;
             margin-bottom: 12px;
             display: flex;
@@ -467,12 +467,12 @@
             font-size: 0.9rem;
         }
 
-        .hostel-location i {
+        .hostel-location i, .interior-location i {
             margin-right: 5px;
             color: var(--primary);
         }
 
-        .hostel-features {
+        .hostel-features, .interior-features {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
@@ -480,21 +480,21 @@
             font-size: 0.8rem;
         }
 
-        .hostel-features span {
+        .hostel-features span, .interior-features span {
             background-color: #fdf3e6;
             padding: 4px 8px;
             border-radius: 20px;
             color: var(--primary);
         }
 
-        .hostel-price {
+        .hostel-price, .interior-price {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--secondary);
             margin-bottom: 12px;
         }
 
-        .hostel-price span {
+        .hostel-price span, .interior-price span {
             font-size: 0.8rem;
             color: #6c757d;
             font-weight: 400;
@@ -686,7 +686,7 @@
             color: #ccc;
         }
 
-        .hostel-gallery {
+        .hostel-gallery, .interior-gallery {
             display: grid;
             grid-template-columns: 1fr;
             gap: 12px;
@@ -752,7 +752,7 @@
             margin-bottom: 2px;
         }
 
-        .hostel-details {
+        .hostel-details, .interior-details {
             background: white;
             padding: 15px;
             border-radius: 10px;
@@ -865,11 +865,11 @@
                 grid-template-columns: 1fr;
             }
             
-            .hostel-grid {
+            .hostel-grid, .interior-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
             
-            .hostel-gallery {
+            .hostel-gallery, .interior-gallery {
                 grid-template-columns: 1fr;
             }
             
@@ -910,7 +910,7 @@
                 font-size: 0.9rem;
             }
             
-            .hostel-grid {
+            .hostel-grid, .interior-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -963,7 +963,7 @@
             font-size: 0.9rem;
         }
 
-        .add-hostel-btn {
+        .add-hostel-btn, .add-interior-btn {
             background-color: var(--success);
             color: white;
             border: none;
@@ -974,7 +974,7 @@
             transition: background-color 0.3s;
         }
 
-        .add-hostel-btn:hover {
+        .add-hostel-btn:hover, .add-interior-btn:hover {
             background-color: #218838;
         }
 
@@ -1137,7 +1137,7 @@
             background-color: #5a6268;
         }
 
-        /* View All Hostels Link */
+        /* View All Link */
         .view-all-link {
             margin-top: 20px;
             text-align: center;
@@ -1249,6 +1249,35 @@
         .close-filters-btn:hover {
             background: #c82333;
         }
+
+        /* Admin Tabs */
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .admin-tab {
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .admin-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .admin-form-section {
+            display: none;
+        }
+
+        .admin-form-section.active {
+            display: block;
+        }
     </style>
     
     <!-- Structured Data (JSON-LD) -->
@@ -1258,7 +1287,7 @@
         "@type": "WebSite",
         "name": "Simi Connect",
         "url": "https://simiconnect.com.ng",
-        "description": "Find affordable, comfortable, and secure private hostels for students in Malete",
+        "description": "Find affordable, comfortable, and secure private hostels and stylish interiors for students in Malete",
         "potentialAction": {
             "@type": "SearchAction",
             "target": "https://simiconnect.com.ng?search={search_term_string}",
@@ -1287,7 +1316,7 @@
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Simi Connect",
-        "description": "Student accommodation platform for finding hostels in Malete",
+        "description": "Student accommodation and interiors platform for finding hostels and furnishings in Malete",
         "url": "https://simiconnect.com.ng",
         "telephone": "+2349071741073",
         "email": "Olunuga03@gmail.com",
@@ -1301,7 +1330,7 @@
             "@type": "City",
             "name": "Malete"
         },
-        "serviceType": "Student Accommodation",
+        "serviceType": "Student Accommodation & Interiors",
         "priceRange": "₦120,000 - ₦500,000"
     }
     </script>
@@ -1319,6 +1348,7 @@
                     <ul>
                         <li><a href="#" onclick="event.preventDefault(); showPage('home')">Home</a></li>
                         <li><a href="#" onclick="event.preventDefault(); showPage('hostels')">Hostels</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); showPage('interiors')">Interiors</a></li>
                         <li><a href="#" onclick="event.preventDefault(); showPage('about')">About</a></li>
                         <li><a href="#" onclick="event.preventDefault(); showPage('contact')">Contact</a></li>
                     </ul>
@@ -1332,10 +1362,10 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <h1>Find Your Perfect Student Hostel</h1>
-                <p>Discover affordable, comfortable, and secure private hostels tailored for students across Malete</p>
+                <h1>Find Your Perfect Student Hostel & Interiors</h1>
+                <p>Discover affordable, comfortable, and secure private hostels and stylish interiors tailored for students across Malete</p>
                 <div class="search-bar">
-                    <input type="text" id="search-input" placeholder="Search by location, university, or hostel name...">
+                    <input type="text" id="search-input" placeholder="Search by location, university, hostel name, or interior type...">
                     <button onclick="searchHostels()">Search <i class="fas fa-search"></i></button>
                 </div>
                 <div style="margin-top: 20px;">
@@ -1558,6 +1588,110 @@
         </section>
     </div>
 
+    <!-- Interiors Page -->
+    <div id="interiors" class="page-section">
+        <section class="listings">
+            <div class="container">
+                <div class="section-title">
+                    <h2>All Interiors</h2>
+                    <p>Browse stylish and affordable interiors for your student space in Malete</p>
+                </div>
+                
+                <!-- Filter Section for Interiors Page -->
+                <div class="filter-toggle-section">
+                    <button class="filter-toggle-btn" onclick="toggleInteriorsFilters()">
+                        <i class="fas fa-filter"></i>
+                        <span>Filter Interiors</span>
+                        <i class="fas fa-chevron-down filter-arrow"></i>
+                    </button>
+                </div>
+                
+                <div class="filters" id="interiors-filters-container" style="display: none;">
+                    <div class="filter-title">
+                        <div>
+                            <i class="fas fa-filter"></i>
+                            <h3>Filter Interiors</h3>
+                        </div>
+                        <button class="close-filters-btn" onclick="toggleInteriorsFilters()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-group">
+                            <label for="interiors-location">Location</label>
+                            <select id="interiors-location">
+                                <option value="">All Locations</option>
+                                <option value="school-road">School Road</option>
+                                <option value="westend">Westend</option>
+                                <option value="safari">Safari</option>
+                                <option value="dara">Dara Area</option>
+                                <option value="baba-soja">Baba Soja</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="interiors-price-range">Price Range</label>
+                            <select id="interiors-price-range">
+                                <option value="">Any Price</option>
+                                <option value="0-50000">Under ₦50,000</option>
+                                <option value="50000-100000">₦50,000 - ₦100,000</option>
+                                <option value="100000-200000">₦100,000 - ₦200,000</option>
+                                <option value="200000+">Over ₦200,000</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="interiors-type">Type</label>
+                            <select id="interiors-type">
+                                <option value="">Any Type</option>
+                                <option value="furniture">Furniture</option>
+                                <option value="decor">Decor</option>
+                                <option value="bedding">Bedding</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="interiors-amenities">Features</label>
+                            <div class="custom-dropdown">
+                                <div class="dropdown-trigger" onclick="toggleInteriorsFeaturesDropdown()">
+                                    <span id="interiors-features-display">Select Features</span>
+                                    <i class="fas fa-chevron-down"></i>
+                        </div>
+                                <div class="dropdown-content" id="interiors-features-dropdown">
+                                    <label class="dropdown-checkbox">
+                                        <input type="checkbox" value="wooden" class="feature-checkbox">
+                                        <span>Wooden</span>
+                                    </label>
+                                    <label class="dropdown-checkbox">
+                                        <input type="checkbox" value="modern" class="feature-checkbox">
+                                        <span>Modern</span>
+                                    </label>
+                                    <label class="dropdown-checkbox">
+                                        <input type="checkbox" value="durable" class="feature-checkbox">
+                                        <span>Durable</span>
+                                    </label>
+                                    <label class="dropdown-checkbox">
+                                        <input type="checkbox" value="easy-clean" class="feature-checkbox">
+                                        <span>Easy to Clean</span>
+                                    </label>
+                                    <label class="dropdown-checkbox">
+                                        <input type="checkbox" value="portable" class="feature-checkbox">
+                                        <span>Portable</span>
+                                    </label>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="filter-button" onclick="filterInteriors('interiors')">Apply Filters <i class="fas fa-check"></i></button>
+                        <button class="filter-button" onclick="clearFilters('interiors')" style="background-color: #6c757d;">Clear Filters <i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                
+                <div id="all-interiors-grid" class="interior-grid">
+                    <!-- All interiors will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- About Page -->
     <div id="about" class="page-section">
         <section class="listings">
@@ -1568,9 +1702,9 @@
                 </div>
                 
                 <div class="about-content">
-                    <p>Simi Connect is a student-focused platform designed to make finding and securing private hostels in Malete easier, faster, and more affordable.</p>
+                    <p>Simi Connect is a student-focused platform designed to make finding and securing private hostels and stylish interiors in Malete easier, faster, and more affordable.</p>
                     
-                    <p>We understand how stressful it can be for students, especially those at Kwara State University (KWASU), to search for accommodation that fits their budget and location needs. That's why we created Simi Connect: a one stop solution where students can browse verified hostel listings, compare prices, and filter options based on what truly matters.</p>
+                    <p>We understand how stressful it can be for students, especially those at Kwara State University (KWASU), to search for accommodation that fits their budget and location needs, and to furnish it with quality interiors. That's why we created Simi Connect: a one-stop solution where students can browse verified hostel and interior listings, compare prices, and filter options based on what truly matters.</p>
                     
                     <p>With Simi Connect, you can:</p>
                     
@@ -1578,31 +1712,31 @@
                         <div class="about-feature">
                             <i class="fas fa-search"></i>
                             <h3>Search & Discover</h3>
-                            <p>Explore a wide range of private hostels available in Malete.</p>
+                            <p>Explore a wide range of private hostels and stylish interiors available in Malete.</p>
                         </div>
                         <div class="about-feature">
                             <i class="fas fa-tag"></i>
                             <h3>Affordable Options</h3>
-                            <p>Find hostels that match your budget, from shared rooms to self-contained apartments.</p>
+                            <p>Find hostels and interiors that match your budget, from shared rooms to self-contained apartments and modern furniture sets.</p>
                         </div>
                         <div class="about-feature">
                             <i class="fas fa-filter"></i>
                             <h3>Filter by Needs</h3>
-                            <p>Narrow down choices by price, location, amenities, and room type.</p>
+                            <p>Narrow down choices by price, location, amenities, room type, or interior features.</p>
                         </div>
                         <div class="about-feature">
                             <i class="fas fa-heart"></i>
                             <h3>Save & Collect</h3>
-                            <p>Bookmark your favorite hostels for easy comparison later.</p>
+                            <p>Bookmark your favorite hostels and interiors for easy comparison later.</p>
                         </div>
                         <div class="about-feature">
                             <i class="fas fa-shield-alt"></i>
                             <h3>Verified Listings</h3>
-                            <p>Every hostel listed on Simi Connect is screened to ensure safety and reliability.</p>
+                            <p>Every hostel and interior listed on Simi Connect is screened to ensure safety and reliability.</p>
                         </div>
                     </div>
                     
-                    <p>Our goal is simple: to help students find the right place to stay without stress.</p>
+                    <p>Our goal is simple: to help students find the right place to stay and the perfect furnishings without stress.</p>
                 </div>
             </div>
         </section>
@@ -1618,13 +1752,13 @@
                 </div>
                 
                 <div class="contact-content">
-                    <p>Have questions about our hostels or need assistance finding accommodation? We're here to help! Reach out to us through any of the following methods:</p>
+                    <p>Have questions about our hostels, interiors, or need assistance finding accommodation and furnishings? We're here to help! Reach out to us through any of the following methods:</p>
                     
                     <div class="contact-methods">
                         <div class="contact-method">
                             <i class="fab fa-whatsapp"></i>
                             <h3>WhatsApp</h3>
-                            <p>09071741073</p>
+                            <p>+2349071741073</p>
                             <a href="https://wa.me/2349071741073" class="whatsapp-btn" target="_blank">
                                 <i class="fab fa-whatsapp"></i> Message Us
                             </a>
@@ -1632,7 +1766,7 @@
                         <div class="contact-method">
                             <i class="fas fa-phone"></i>
                             <h3>Call Us</h3>
-                            <p>080 7347 4302</p>
+                            <p>+2348073474302</p>
                             <a href="tel:+2348073474302" class="call-btn">
                                 <i class="fas fa-phone"></i> Call Now
                             </a>
@@ -1662,48 +1796,91 @@
         <div class="admin-panel" id="admin-panel" style="display: none;">
             <div class="admin-auth">
                 <button id="signInBtn" onclick="signInWithGoogle()" class="btn btn-primary">
-                    <i class="fab fa-google"></i> Sign In to Add Hostels
+                    <i class="fab fa-google"></i> Sign In to Add Listings
                 </button>
                 <button id="signOutBtn" onclick="signOut()" class="btn btn-secondary" style="display: none;">
                     <i class="fas fa-sign-out-alt"></i> Sign Out
                 </button>
             </div>
             <div class="admin-only">
-            <h3><i class="fas fa-cog"></i> Add New Hostel</h3>
-            <div class="admin-form">
-                <input type="text" id="hostel-name" placeholder="Hostel Name">
-                <input type="text" id="hostel-location" placeholder="Location">
-                <input type="text" id="hostel-price" placeholder="Price (₦)">
-                
-                <!-- File upload for hostel images -->
-                <div class="file-upload">
-                    <label class="file-upload-label" for="hostel-image">
-                        <i class="fas fa-upload"></i> Upload Main Image
-                    </label>
-                    <input type="file" id="hostel-image" class="file-upload-input" accept="image/*" onchange="previewImage(this, 'image-preview')">
-                    <div id="image-preview" class="upload-preview"></div>
+                <div class="admin-tabs">
+                    <button class="admin-tab active" onclick="switchAdminTab('hostel')">Add Hostel</button>
+                    <button class="admin-tab" onclick="switchAdminTab('interior')">Add Interior</button>
                 </div>
                 
-                <div class="file-upload">
-                    <label class="file-upload-label" for="hostel-image2">
-                        <i class="fas fa-upload"></i> Upload Image 2
-                    </label>
-                    <input type="file" id="hostel-image2" class="file-upload-input" accept="image/*" onchange="previewImage(this, 'image-preview2')">
-                    <div id="image-preview2" class="upload-preview"></div>
+                <!-- Hostel Form -->
+                <div id="hostel-form-section" class="admin-form-section active">
+                    <h3><i class="fas fa-cog"></i> Add New Hostel</h3>
+                    <div class="admin-form">
+                        <input type="text" id="hostel-name" placeholder="Hostel Name">
+                        <input type="text" id="hostel-location" placeholder="Location">
+                        <input type="text" id="hostel-price" placeholder="Price (₦)">
+                        
+                        <!-- File upload for hostel images -->
+                        <div class="file-upload">
+                            <label class="file-upload-label" for="hostel-image">
+                                <i class="fas fa-upload"></i> Upload Main Image
+                            </label>
+                            <input type="file" id="hostel-image" class="file-upload-input" accept="image/*" onchange="previewImage(this, 'image-preview')">
+                            <div id="image-preview" class="upload-preview"></div>
+                        </div>
+                        
+                        <div class="file-upload">
+                            <label class="file-upload-label" for="hostel-image2">
+                                <i class="fas fa-upload"></i> Upload Image 2
+                            </label>
+                            <input type="file" id="hostel-image2" class="file-upload-input" accept="image/*" onchange="previewImage(this, 'image-preview2')">
+                            <div id="image-preview2" class="upload-preview"></div>
+                        </div>
+                        
+                        <select id="hostel-type">
+                            <option value="single">Single Room</option>
+                            <option value="room-parlor">Room and Parlor</option>
+                            <option value="apartment">Apartment</option>
+                        </select>
+                        <input type="text" id="hostel-features" placeholder="Features (comma separated)">
+                        <input type="text" id="hostel-whatsapp" placeholder="WhatsApp Number" value="+2349071741073">
+                        <input type="text" id="hostel-youtube" placeholder="YouTube Video Link (optional)">
+                    </div>
+                    <button class="add-hostel-btn" onclick="addHostel()">Add Hostel <i class="fas fa-plus"></i></button>
                 </div>
                 
-                
-                
-                <select id="hostel-type">
-                    <option value="single">Single Room</option>
-                    <option value="room-parlor">Room and Parlor</option>
-                    <option value="apartment">Apartment</option>
-                </select>
-                <input type="text" id="hostel-features" placeholder="Features (comma separated)">
-                <input type="text" id="hostel-whatsapp" placeholder="WhatsApp Number" value="09071741073">
-                <input type="text" id="hostel-youtube" placeholder="YouTube Video Link (optional)">
-            </div>
-            <button class="add-hostel-btn admin-only" onclick="addHostel()">Add Hostel <i class="fas fa-plus"></i></button>
+                <!-- Interior Form -->
+                <div id="interior-form-section" class="admin-form-section">
+                    <h3><i class="fas fa-cog"></i> Add New Interior</h3>
+                    <div class="admin-form">
+                        <input type="text" id="interior-name" placeholder="Interior Name">
+                        <input type="text" id="interior-location" placeholder="Location">
+                        <input type="text" id="interior-price" placeholder="Price (₦)">
+                        
+                        <!-- File upload for interior images -->
+                        <div class="file-upload">
+                            <label class="file-upload-label" for="interior-image">
+                                <i class="fas fa-upload"></i> Upload Main Image
+                            </label>
+                            <input type="file" id="interior-image" class="file-upload-input" accept="image/*" onchange="previewImage(this, 'interior-image-preview')">
+                            <div id="interior-image-preview" class="upload-preview"></div>
+                        </div>
+                        
+                        <div class="file-upload">
+                            <label class="file-upload-label" for="interior-image2">
+                                <i class="fas fa-upload"></i> Upload Image 2
+                            </label>
+                            <input type="file" id="interior-image2" class="file-upload-input" accept="image/*" onchange="previewImage(this, 'interior-image-preview2')">
+                            <div id="interior-image-preview2" class="upload-preview"></div>
+                        </div>
+                        
+                        <select id="interior-type">
+                            <option value="furniture">Furniture</option>
+                            <option value="decor">Decor</option>
+                            <option value="bedding">Bedding</option>
+                        </select>
+                        <input type="text" id="interior-features" placeholder="Features (comma separated)">
+                        <input type="text" id="interior-whatsapp" placeholder="WhatsApp Number" value="+2349071741073">
+                        <input type="text" id="interior-youtube" placeholder="YouTube Video Link (optional)">
+                    </div>
+                    <button class="add-interior-btn" onclick="addInterior()">Add Interior <i class="fas fa-plus"></i></button>
+                </div>
             </div>
         </div>
     </div>
@@ -1712,7 +1889,7 @@
     <div id="delete-modal" class="delete-modal">
         <div class="delete-modal-content">
             <h3><i class="fas fa-exclamation-triangle"></i> Confirm Deletion</h3>
-            <p>Are you sure you want to delete this hostel? This action cannot be undone.</p>
+            <p>Are you sure you want to delete this item? This action cannot be undone.</p>
             <div class="delete-modal-buttons">
                 <button class="delete-confirm-btn" onclick="confirmDelete()">Yes, Delete</button>
                 <button class="delete-cancel-btn" onclick="cancelDelete()">Cancel</button>
@@ -1724,7 +1901,7 @@
     <div id="gallery-modal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            <div id="hostel-gallery" class="hostel-gallery">
+            <div id="item-gallery" class="hostel-gallery">
                 <div class="gallery-main">
                     <img id="gallery-main-img" src="" alt="">
                 </div>
@@ -1733,10 +1910,10 @@
                 </div>
             </div>
             <div class="hostel-details">
-                <h2 id="modal-hostel-name"></h2>
-                <p id="modal-hostel-location" class="hostel-location"></p>
-                <p id="modal-hostel-price" class="hostel-price"></p>
-                <div id="modal-hostel-features" class="hostel-features"></div>
+                <h2 id="modal-item-name"></h2>
+                <p id="modal-item-location" class="hostel-location"></p>
+                <p id="modal-item-price" class="hostel-price"></p>
+                <div id="modal-item-features" class="hostel-features"></div>
                 <a id="modal-whatsapp-link" class="whatsapp-btn" href="#" target="_blank">
                     <i class="fab fa-whatsapp"></i> Contact via WhatsApp
                 </a>
@@ -1753,7 +1930,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Simi Connect</h3>
-                    <p>Helping students find affordable and comfortable accommodation near campuses nationwide.</p>
+                    <p>Helping students find affordable and comfortable accommodation and stylish interiors near campuses nationwide.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1764,7 +1941,7 @@
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                    <!-- <p><i class="fas fa-map-marker-alt"></i> 123 University Road, Malete</p> -->
-                    <p><i class="fas fa-phone"></i> 080 7347 4302</p>
+                    <p><i class="fas fa-phone"></i> +234 807 347 4302</p>
                     <p><i class="fas fa-envelope"></i> Olunuga03@gmail.com</p>
                 </div>
             </div>
@@ -1788,7 +1965,7 @@
                 youtube: "https://youtube.com/shorts/dBMngEaXWaw",
                 type: "single",
                 features: ["Security", "Single Room"],
-                whatsapp: "09071741073",
+                whatsapp: "+2349071741073",
                 featured: true
             },
             {
@@ -1802,7 +1979,7 @@
                 youtube: "https://youtube.com/shorts/dBMngEmXWaw",
                 type: "single",
                 features: ["Single Room"],
-                whatsapp: "09071741073",
+                whatsapp: "+2349071741073",
                 featured: true
             },
             {
@@ -1816,17 +1993,20 @@
                 youtube: "https://youtube.com/shorts/SUqvBofRzjU",
                 type: "single",
                 features: ["Single Room", "POP"],
-                whatsapp: "09071741073",
+                whatsapp: "+2349071741073",
                 featured: true
             }
         ];
 
-        // Firebase Configuration
+        // Interiors data - Removed default items, only Firebase will show
+        let interiorsData = [];
+
+        // Firebase Configuration - UPDATED TO MATCH YOUR PROVIDED CONFIG
         const firebaseConfig = {
             apiKey: "AIzaSyA7YWcd2wQJnutWtD0kPJSroDHDZIN_HX8",
-            authDomain: "simi-connect.firebaseapp.com",
-            projectId: "simi-connect",
-            storageBucket: "simi-connect.firebasestorage.app",
+            authDomain: "malete-hostel.firebaseapp.com",
+            projectId: "malete-hostel",
+            storageBucket: "malete-hostel.firebasestorage.app",
             messagingSenderId: "900139110604",
             appId: "1:900139110604:web:51fc3f249398c294e67269",
             measurementId: "G-CZPXYRPYHV"
@@ -1839,18 +2019,41 @@
 
         // Store uploaded images
         const uploadedImages = {
-            image1: null,
-            image2: null
+            // For hostels
+            'hostel-image': null,
+            'hostel-image2': null,
+            // For interiors
+            'interior-image': null,
+            'interior-image2': null
         };
 
-        // Store the index of the hostel to be deleted
-        let hostelToDelete = null;
+        // Store the index and type of the item to be deleted
+        let itemToDelete = null;
         
         // Track admin mode status
         let isAdminMode = false;
 
-        // Firebase hostels (loaded from database)
+        // Firebase items (loaded from database)
         let firebaseHostels = [];
+        let firebaseInteriors = [];
+
+        // Unsubscribe functions for real-time listeners
+        let hostelsUnsubscribe = null;
+        let interiorsUnsubscribe = null;
+
+        // Current admin tab
+        let currentAdminTab = 'hostel';
+
+        // Function to format WhatsApp number to international format
+        function formatWhatsAppNumber(num) {
+            let cleanNum = num.replace(/\D/g, ''); // Remove non-digits
+            if (cleanNum.startsWith('0')) {
+                cleanNum = '234' + cleanNum.substring(1);
+            } else if (!cleanNum.startsWith('234') && cleanNum.length === 10) {
+                cleanNum = '234' + cleanNum;
+            }
+            return cleanNum;
+        }
 
         // Authentication functions
         function signInWithGoogle() {
@@ -1859,7 +2062,6 @@
                 .then((result) => {
                     console.log('Signed in successfully:', result.user);
                     showAdminPanel();
-                    loadHostelsFromFirebase(); // Reload hostels after sign in
                 })
                 .catch((error) => {
                     console.error('Sign in error:', error);
@@ -1914,61 +2116,135 @@
             }
         });
 
-        // Function to load hostels from Firebase
-        async function loadHostelsFromFirebase() {
+        // Function to switch admin tabs
+        function switchAdminTab(tab) {
+            currentAdminTab = tab;
+            document.querySelectorAll('.admin-tab').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('.admin-form-section').forEach(section => section.classList.remove('active'));
+            document.getElementById(tab + '-form-section').classList.add('active');
+        }
+
+        // Function to load hostels from Firebase with real-time listener
+        function loadHostelsFromFirebase() {
+            if (hostelsUnsubscribe) {
+                hostelsUnsubscribe();
+            }
+
             try {
-                console.log('Loading hostels from Firebase...');
-                const snapshot = await db.collection('hostels').get();
-                firebaseHostels = [];
-                snapshot.forEach(doc => {
-                    const hostel = { id: doc.id, ...doc.data() };
-                    firebaseHostels.push(hostel);
-                    console.log('Loaded Firebase hostel:', hostel.name, 'ID:', hostel.id);
+                console.log('Setting up real-time listener for hostels...');
+                hostelsUnsubscribe = db.collection('hostels').onSnapshot((snapshot) => {
+                    firebaseHostels = [];
+                    snapshot.forEach(doc => {
+                        const hostel = { id: doc.id, ...doc.data() };
+                        firebaseHostels.push(hostel);
+                        console.log('Loaded Firebase hostel:', hostel.name, 'ID:', hostel.id);
+                    });
+                    
+                    console.log('=== HOSTEL UPDATE SUMMARY ===');
+                    console.log('Default hostels:', hostelData.length);
+                    console.log('Firebase hostels:', firebaseHostels.length);
+                    console.log('Total hostels:', firebaseHostels.length + hostelData.length);
+                    
+                    // Update displays
+                    displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+                    
+                    // Update all-hostel-grid if hostels page is active
+                    const hostelsPage = document.getElementById('hostels');
+                    if (hostelsPage && hostelsPage.classList.contains('active')) {
+                        const allHostels = [...hostelData, ...firebaseHostels];
+                        displayHostels(allHostels, 'all-hostel-grid');
+                    }
+                    
+                }, (error) => {
+                    console.error('Error in hostels snapshot listener:', error);
+                    // Fallback to default hostels only
+                    firebaseHostels = [];
+                    displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+                    if (document.getElementById('hostels') && document.getElementById('hostels').classList.contains('active')) {
+                        displayHostels(hostelData, 'all-hostel-grid');
+                    }
                 });
-                
-                // Combine default hostels with Firebase hostels
-                const allHostels = [...hostelData, ...firebaseHostels];
-                
-                console.log('=== HOSTEL LOADING SUMMARY ===');
-                console.log('Default hostels:', hostelData.length);
-                console.log('Firebase hostels:', firebaseHostels.length);
-                console.log('Total hostels:', allHostels.length);
-                console.log('Firebase hostel names:', firebaseHostels.map(h => h.name));
-                
-                // Update displays
-                // Home page shows only default hostels (not Firebase hostels)
-                displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
-                // Hostels page shows all hostels (default + Firebase)
-                displayHostels(allHostels, 'all-hostel-grid');
-                
-                console.log('Hostels displayed on home page:', hostelData.filter(h => h.featured).length);
-                console.log('Hostels displayed on hostels page:', allHostels.length);
-                
             } catch (error) {
-                console.error('Error loading hostels from Firebase:', error);
-                console.error('Error details:', error.message);
-                // Fallback to default hostels only
+                console.error('Error setting up hostels listener:', error);
+                // Fallback
+                firebaseHostels = [];
                 displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
-                displayHostels(hostelData, 'all-hostel-grid');
-                console.log('Using fallback - default hostels only');
+                if (document.getElementById('hostels') && document.getElementById('hostels').classList.contains('active')) {
+                    displayHostels(hostelData, 'all-hostel-grid');
+                }
+            }
+        }
+
+        // Function to update interiors display
+        function updateInteriorsDisplay() {
+            const interiorsPage = document.getElementById('interiors');
+            if (interiorsPage && interiorsPage.classList.contains('active')) {
+                const allInteriors = firebaseInteriors;
+                displayInteriors(allInteriors, 'all-interiors-grid');
+            }
+        }
+
+        // Function to load interiors from Firebase with real-time listener
+        function loadInteriorsFromFirebase() {
+            if (interiorsUnsubscribe) {
+                interiorsUnsubscribe();
+            }
+            interiorsUnsubscribe = null;
+
+            try {
+                console.log('Setting up real-time listener for interiors...');
+                interiorsUnsubscribe = db.collection('interiors').onSnapshot((snapshot) => {
+                    firebaseInteriors = [];
+                    snapshot.forEach(doc => {
+                        const interior = { id: doc.id, ...doc.data() };
+                        firebaseInteriors.push(interior);
+                        console.log('Loaded Firebase interior:', interior.name, 'ID:', interior.id);
+                    });
+                    
+                    console.log('=== INTERIORS UPDATE SUMMARY ===');
+                    console.log('Default interiors:', interiorsData.length);
+                    console.log('Firebase interiors:', firebaseInteriors.length);
+                    console.log('Total interiors:', firebaseInteriors.length + interiorsData.length);
+                    
+                    updateInteriorsDisplay();
+                    
+                }, (error) => {
+                    console.error('Error in interiors snapshot listener:', error);
+                    // Fallback to default interiors only
+                    firebaseInteriors = [];
+                    updateInteriorsDisplay();
+                });
+            } catch (error) {
+                console.error('Error setting up interiors listener:', error);
+                // Fallback
+                firebaseInteriors = [];
+                updateInteriorsDisplay();
             }
         }
 
         // Function to save hostel to Firebase
         async function saveHostelToFirebase(hostel) {
             try {
-                console.log('Attempting to save to Firestore...');
-                console.log('Database object:', db);
-                console.log('Collection reference:', db.collection('hostels'));
-                
+                console.log('Attempting to save hostel to Firestore...');
                 const docRef = await db.collection('hostels').add(hostel);
                 console.log('Hostel saved to Firebase with ID:', docRef.id);
                 return docRef.id;
             } catch (error) {
                 console.error('Detailed Firebase error:', error);
-                console.error('Error code:', error.code);
-                console.error('Error message:', error.message);
-                console.error('Error details:', error.details);
+                throw error;
+            }
+        }
+
+        // Function to save interior to Firebase
+        async function saveInteriorToFirebase(interior) {
+            try {
+                console.log('Attempting to save interior to Firestore...');
+                const docRef = await db.collection('interiors').add(interior);
+                console.log('Interior saved to Firebase with ID:', docRef.id);
+                return docRef.id;
+            } catch (error) {
+                console.error('Detailed Firebase error:', error);
                 throw error;
             }
         }
@@ -1984,9 +2260,21 @@
             }
         }
 
+        // Function to delete interior from Firebase
+        async function deleteInteriorFromFirebase(interiorId) {
+            try {
+                await db.collection('interiors').doc(interiorId).delete();
+                console.log('Interior deleted from Firebase:', interiorId);
+            } catch (error) {
+                console.error('Error deleting interior from Firebase:', error);
+                throw error;
+            }
+        }
+
         // Function to display hostels
         function displayHostels(hostels, gridId) {
             const hostelGrid = document.getElementById(gridId);
+            if (!hostelGrid) return;
             hostelGrid.innerHTML = '';
             
             if (hostels.length === 0) {
@@ -2006,10 +2294,12 @@
                 
                 // Determine if this is a Firebase hostel (has id) or default hostel
                 const isFirebaseHostel = hostel.id !== undefined;
-                const deleteIndex = isFirebaseHostel ? `firebase-${hostel.id}` : `default-${index}`;
+                const deleteIndex = isFirebaseHostel ? `hostel-firebase-${hostel.id}` : `hostel-default-${index}`;
+                
+                const formattedWhatsApp = formatWhatsAppNumber(hostel.whatsapp);
                 
                 hostelCard.innerHTML = `
-                    ${isAdminMode ? `<button class="delete-hostel admin-mode" onclick="initiateDelete('${deleteIndex}')">
+                    ${isAdminMode ? `<button class="delete-item admin-mode" onclick="initiateDelete('${deleteIndex}')">
                         <i class="fas fa-times"></i>
                     </button>` : ''}
                     <div class="hostel-img">
@@ -2027,8 +2317,8 @@
                         <div class="hostel-price">
                             ₦${hostel.price.toLocaleString()} <span>/year</span>
                         </div>
-                        <button class="view-btn" onclick="viewHostel('${deleteIndex}')">View Details</button>
-                        <a class="whatsapp-btn" href="https://wa.me/${hostel.whatsapp.replace('+234', '234').replace(' ', '')}?text=Hello! I'm interested in Hostel located at '${hostel.location}' priced at '₦${hostel.price.toLocaleString()}/year'. Could you please provide more information about availability?" target="_blank">
+                        <button class="view-btn" onclick="viewItem('${deleteIndex}', 'hostel')">${isAdminMode ? 'Edit' : 'View Details'}</button>
+                        <a class="whatsapp-btn" href="https://wa.me/${formattedWhatsApp}?text=Hello! I'm interested in ${hostel.name} located at '${hostel.location}' priced at '₦${hostel.price.toLocaleString()}/year'. Could you please provide more information?" target="_blank">
                             <i class="fab fa-whatsapp"></i> Contact via WhatsApp
                         </a>
                     </div>
@@ -2038,68 +2328,143 @@
             });
         }
 
-        // Function to initiate hostel deletion
+        // Function to display interiors
+        function displayInteriors(interiors, gridId) {
+            const interiorGrid = document.getElementById(gridId);
+            if (!interiorGrid) return;
+            interiorGrid.innerHTML = '';
+            
+            if (interiors.length === 0) {
+                interiorGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 15px; color: #6c757d;"></i>
+                        <h3>No interiors found</h3>
+                        <p>Try adjusting your search or filter criteria</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            interiors.forEach((interior, index) => {
+                const interiorCard = document.createElement('div');
+                interiorCard.className = 'interior-card';
+                
+                // Determine if this is a Firebase interior (has id) or default interior
+                const isFirebaseInterior = interior.id !== undefined;
+                const deleteIndex = isFirebaseInterior ? `interior-firebase-${interior.id}` : `interior-default-${index}`;
+                
+                const formattedWhatsApp = formatWhatsAppNumber(interior.whatsapp);
+                
+                interiorCard.innerHTML = `
+                    ${isAdminMode ? `<button class="delete-item admin-mode" onclick="initiateDelete('${deleteIndex}')">
+                        <i class="fas fa-times"></i>
+                    </button>` : ''}
+                    <div class="interior-img">
+                        <img src="${interior.images[0]}" alt="${interior.name}">
+                        <div class="gallery-indicator">2 photos + video</div>
+                    </div>
+                    <div class="interior-info">
+                        <h3>${interior.name}</h3>
+                        <div class="interior-location">
+                            <i class="fas fa-map-marker-alt"></i> ${interior.location}
+                        </div>
+                        <div class="interior-features">
+                            ${interior.features.map(feature => `<span>${feature}</span>`).join('')}
+                        </div>
+                        <div class="interior-price">
+                            ₦${interior.price.toLocaleString()}
+                        </div>
+                        <button class="view-btn" onclick="viewItem('${deleteIndex}', 'interior')">${isAdminMode ? 'Edit' : 'View Details'}</button>
+                        <a class="whatsapp-btn" href="https://wa.me/${formattedWhatsApp}?text=Hello! I'm interested in ${interior.name} located at '${interior.location}' priced at '₦${interior.price.toLocaleString()}'. Could you please provide more information?" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+                        </a>
+                    </div>
+                `;
+                
+                interiorGrid.appendChild(interiorCard);
+            });
+        }
+
+        // Function to initiate item deletion
         function initiateDelete(index) {
-            hostelToDelete = index;
+            itemToDelete = index;
             document.getElementById('delete-modal').style.display = 'block';
         }
 
         // Function to confirm deletion
         async function confirmDelete() {
-            if (hostelToDelete !== null) {
+            if (itemToDelete !== null) {
                 try {
-                    if (hostelToDelete.startsWith('firebase-')) {
+                    if (itemToDelete.startsWith('hostel-firebase-')) {
                         // Delete from Firebase
-                        const hostelId = hostelToDelete.replace('firebase-', '');
+                        const hostelId = itemToDelete.replace('hostel-firebase-', '');
                         await deleteHostelFromFirebase(hostelId);
                         
-                        // Remove from local array
+                        // Remove from local array immediately
                         firebaseHostels = firebaseHostels.filter(h => h.id !== hostelId);
                         
-                        // Reload hostels from Firebase
-                        await loadHostelsFromFirebase();
-                    } else if (hostelToDelete.startsWith('default-')) {
-                        // Delete from default hostels (not recommended for production)
-                        const index = parseInt(hostelToDelete.replace('default-', ''));
+                        // Listener will handle full update
+                    } else if (itemToDelete.startsWith('hostel-default-')) {
+                        // Delete from default hostels
+                        const index = parseInt(itemToDelete.replace('hostel-default-', ''));
                         hostelData.splice(index, 1);
                 
-                // Update displays
-                        const allHostels = [...hostelData, ...firebaseHostels];
-                        displayHostels(allHostels.filter(h => h.featured), 'featured-hostel-grid');
-                        displayHostels(allHostels, 'all-hostel-grid');
+                        // Update displays immediately
+                        displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+                        const hostelsPage = document.getElementById('hostels');
+                        if (hostelsPage && hostelsPage.classList.contains('active')) {
+                            const allHostels = [...hostelData, ...firebaseHostels];
+                            displayHostels(allHostels, 'all-hostel-grid');
+                        }
+                    } else if (itemToDelete.startsWith('interior-firebase-')) {
+                        // Delete from Firebase
+                        const interiorId = itemToDelete.replace('interior-firebase-', '');
+                        await deleteInteriorFromFirebase(interiorId);
+                        
+                        // Remove from local array immediately
+                        firebaseInteriors = firebaseInteriors.filter(i => i.id !== interiorId);
+                        
+                        // Listener will handle full update
+                    } else if (itemToDelete.startsWith('interior-default-')) {
+                        // Delete from default interiors
+                        const index = parseInt(itemToDelete.replace('interior-default-', ''));
+                        interiorsData.splice(index, 1);
+                
+                        // Update displays immediately
+                        updateInteriorsDisplay();
                     }
                 
-                // Hide modal
-                document.getElementById('delete-modal').style.display = 'none';
-                alert('Hostel deleted successfully!');
+                    // Hide modal
+                    document.getElementById('delete-modal').style.display = 'none';
+                    alert('Item deleted successfully!');
                 } catch (error) {
-                    console.error('Error deleting hostel:', error);
-                    alert('Error deleting hostel. Please try again.');
+                    console.error('Error deleting item:', error);
+                    alert('Error deleting item. Please try again.');
                 }
             }
         }
 
         // Function to cancel deletion
         function cancelDelete() {
-            hostelToDelete = null;
+            itemToDelete = null;
             document.getElementById('delete-modal').style.display = 'none';
         }
 
-        // Function to view hostel details
-        function viewHostel(hostelIndex) {
-            let hostel;
+        // Function to view item details (hostel or interior)
+        function viewItem(itemIndex, type) {
+            let item;
             
-            // Determine if it's a Firebase or default hostel
-            if (hostelIndex.startsWith('firebase-')) {
-                const hostelId = hostelIndex.replace('firebase-', '');
-                hostel = firebaseHostels.find(h => h.id === hostelId);
-            } else if (hostelIndex.startsWith('default-')) {
-                const index = parseInt(hostelIndex.replace('default-', ''));
-                hostel = hostelData[index];
+            // Determine if it's a Firebase or default item
+            if (itemIndex.startsWith(`${type}-firebase-`)) {
+                const itemId = itemIndex.replace(`${type}-firebase-`, '');
+                item = (type === 'hostel' ? firebaseHostels : firebaseInteriors).find(i => i.id === itemId);
+            } else if (itemIndex.startsWith(`${type}-default-`)) {
+                const index = parseInt(itemIndex.replace(`${type}-default-`, ''));
+                item = (type === 'hostel' ? hostelData : interiorsData)[index];
             }
             
-            if (!hostel) {
-                console.error('Hostel not found');
+            if (!item) {
+                console.error('Item not found');
                 return;
             }
             
@@ -2108,28 +2473,29 @@
             const thumbnailsContainer = document.getElementById('gallery-thumbnails');
             
             // Set main image
-            mainImg.src = hostel.images[0];
+            mainImg.src = item.images[0];
             
-            // Set hostel details
-            document.getElementById('modal-hostel-name').textContent = hostel.name;
-            document.getElementById('modal-hostel-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${hostel.location}`;
-            document.getElementById('modal-hostel-price').textContent = `₦${hostel.price.toLocaleString()} /year`;
+            // Set item details
+            document.getElementById('modal-item-name').textContent = item.name;
+            document.getElementById('modal-item-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${item.location}`;
+            document.getElementById('modal-item-price').textContent = `₦${item.price.toLocaleString()} ${type === 'hostel' ? '/year' : ''}`;
             
             // Set features
-            const featuresContainer = document.getElementById('modal-hostel-features');
-            featuresContainer.innerHTML = hostel.features.map(feature => `<span>${feature}</span>`).join('');
+            const featuresContainer = document.getElementById('modal-item-features');
+            featuresContainer.innerHTML = item.features.map(feature => `<span>${feature}</span>`).join('');
             
             // Set WhatsApp link
-            document.getElementById('modal-whatsapp-link').href = `https://wa.me/${hostel.whatsapp.replace('+234', '234').replace(' ', '')}?text=Hello! I'm interested in Hostel located at '${hostel.location}' priced at '₦${hostel.price.toLocaleString()}/year'. Could you please provide more information about availability?`;
+            const formattedWhatsApp = formatWhatsAppNumber(item.whatsapp);
+            document.getElementById('modal-whatsapp-link').href = `https://wa.me/${formattedWhatsApp}?text=Hello! I'm interested in ${item.name} located at '${item.location}' priced at '₦${item.price.toLocaleString()}${type === 'hostel' ? '/year' : ''}'. Could you please provide more information about availability?`;
             
             // Set call link
-            document.getElementById('modal-call-link').href = `tel:${hostel.whatsapp}`;
+            document.getElementById('modal-call-link').href = `tel:${item.whatsapp}`;
             
-            // Create thumbnails (2 images + 1 YouTube video)
+            // Create thumbnails (2 images + 1 YouTube video if available)
             thumbnailsContainer.innerHTML = '';
             
             // Add 2 image thumbnails
-            hostel.images.forEach((image, imgIndex) => {
+            item.images.forEach((image, imgIndex) => {
                 const thumbnail = document.createElement('div');
                 thumbnail.className = 'gallery-thumbnail';
                 thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${imgIndex + 1}" onclick="changeImage(${imgIndex})">`;
@@ -2137,13 +2503,12 @@
             });
             
             // Add YouTube video thumbnail
-            if (hostel.youtube) {
+            if (item.youtube) {
                 const youtubeThumbnail = document.createElement('div');
                 youtubeThumbnail.className = 'gallery-thumbnail youtube';
                 youtubeThumbnail.innerHTML = `<div><i class="fab fa-youtube"></i><br>Video</div>`;
                 youtubeThumbnail.onclick = () => {
-                    // Open video in new tab instead of embedding
-                    window.open(hostel.youtube, '_blank');
+                    window.open(item.youtube, '_blank');
                 };
                 thumbnailsContainer.appendChild(youtubeThumbnail);
             }
@@ -2183,9 +2548,11 @@
             // Scroll to top
             window.scrollTo(0, 0);
             
-            // If showing hostels page, reload and display all hostels (default + Firebase)
+            // Update displays based on page
             if (pageId === 'hostels') {
-                loadHostelsFromFirebase(); // Reload to ensure Firebase hostels are included
+                // Listener handles update
+            } else if (pageId === 'interiors') {
+                updateInteriorsDisplay();
             }
             
             // Hide search results when switching pages
@@ -2199,7 +2566,7 @@
         // Function to handle URL changes (for direct links)
         function handleUrlChange() {
             const hash = window.location.hash.substring(1); // Remove the # symbol
-            const validPages = ['home', 'hostels', 'about', 'contact'];
+            const validPages = ['home', 'hostels', 'interiors', 'about', 'contact'];
             
             if (hash && validPages.includes(hash)) {
                 showPage(hash);
@@ -2242,7 +2609,24 @@
             }
         }
 
-        // Function to search hostels
+        // Function to toggle filters on interiors page
+        function toggleInteriorsFilters() {
+            const filtersContainer = document.getElementById('interiors-filters-container');
+            const toggleBtn = document.querySelector('#interiors .filter-toggle-btn');
+            const arrow = document.querySelector('#interiors .filter-arrow');
+            
+            if (filtersContainer.style.display === 'none') {
+                filtersContainer.style.display = 'block';
+                toggleBtn.classList.add('active');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                filtersContainer.style.display = 'none';
+                toggleBtn.classList.remove('active');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Function to search hostels (on home page)
         function searchHostels() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
             const searchResults = document.getElementById('search-results');
@@ -2258,7 +2642,11 @@
                 
                 // Refresh displays to show delete buttons
                 displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
-                displayHostels(hostelData, 'all-hostel-grid');
+                const hostelsPage = document.getElementById('hostels');
+                if (hostelsPage && hostelsPage.classList.contains('active')) {
+                    const allHostels = [...hostelData, ...firebaseHostels];
+                    displayHostels(allHostels, 'all-hostel-grid');
+                }
                 return;
             }
             
@@ -2288,7 +2676,7 @@
             adminPanel.style.display = 'none';
         }
 
-        // Function to toggle amenities dropdown
+        // Function to toggle amenities dropdown (hostels)
         function toggleAmenitiesDropdown() {
             const dropdown = document.getElementById('amenities-dropdown');
             const trigger = document.querySelector('[onclick="toggleAmenitiesDropdown()"]');
@@ -2297,12 +2685,7 @@
             trigger.classList.toggle('active');
             
             // Close other dropdowns
-            const hostelsDropdown = document.getElementById('hostels-amenities-dropdown');
-            const hostelsTrigger = document.querySelector('[onclick="toggleHostelsAmenitiesDropdown()"]');
-            if (hostelsDropdown && hostelsDropdown !== dropdown) {
-                hostelsDropdown.classList.remove('show');
-                hostelsTrigger.classList.remove('active');
-            }
+            closeOtherDropdowns(dropdown);
         }
 
         // Function to toggle hostels amenities dropdown
@@ -2314,15 +2697,34 @@
             trigger.classList.toggle('active');
             
             // Close other dropdowns
-            const homeDropdown = document.getElementById('amenities-dropdown');
-            const homeTrigger = document.querySelector('[onclick="toggleAmenitiesDropdown()"]');
-            if (homeDropdown && homeDropdown !== dropdown) {
-                homeDropdown.classList.remove('show');
-                homeTrigger.classList.remove('active');
-            }
+            closeOtherDropdowns(dropdown);
         }
 
-        // Function to update amenities display text
+        // Function to toggle interiors features dropdown
+        function toggleInteriorsFeaturesDropdown() {
+            const dropdown = document.getElementById('interiors-features-dropdown');
+            const trigger = document.querySelector('[onclick="toggleInteriorsFeaturesDropdown()"]');
+            
+            dropdown.classList.toggle('show');
+            trigger.classList.toggle('active');
+            
+            // Close other dropdowns
+            closeOtherDropdowns(dropdown);
+        }
+
+        // Helper to close other dropdowns
+        function closeOtherDropdowns(currentDropdown) {
+            const allDropdowns = document.querySelectorAll('.dropdown-content');
+            const allTriggers = document.querySelectorAll('.dropdown-trigger');
+            allDropdowns.forEach(dropdown => {
+                if (dropdown !== currentDropdown) dropdown.classList.remove('show');
+            });
+            allTriggers.forEach(trigger => {
+                if (!trigger.classList.contains('active')) trigger.classList.remove('active');
+            });
+        }
+
+        // Function to update amenities display text (hostels)
         function updateAmenitiesDisplay() {
             const checkboxes = document.querySelectorAll('.amenity-checkbox:checked');
             const display = document.getElementById('amenities-display');
@@ -2339,6 +2741,22 @@
                 const text = `${checkboxes.length} amenities selected`;
                 if (display) display.textContent = text;
                 if (hostelsDisplay) hostelsDisplay.textContent = text;
+            }
+        }
+
+        // Function to update features display text (interiors)
+        function updateFeaturesDisplay() {
+            const checkboxes = document.querySelectorAll('.feature-checkbox:checked');
+            const display = document.getElementById('interiors-features-display');
+            
+            if (checkboxes.length === 0) {
+                if (display) display.textContent = 'Select Features';
+            } else if (checkboxes.length === 1) {
+                const text = checkboxes[0].nextElementSibling.textContent;
+                if (display) display.textContent = text;
+            } else {
+                const text = `${checkboxes.length} features selected`;
+                if (display) display.textContent = text;
             }
         }
 
@@ -2382,7 +2800,6 @@
             if (locationFilter) {
                 const beforeCount = filteredHostels.length;
                 filteredHostels = filteredHostels.filter(hostel => {
-                    // Map dropdown values to actual location keywords
                     let locationKeyword = '';
                     switch(locationFilter) {
                         case 'school-road':
@@ -2405,7 +2822,6 @@
                     }
                     
                     const match = hostel.location.toLowerCase().includes(locationKeyword);
-                    console.log(`Location: ${hostel.name} - "${hostel.location}" includes "${locationKeyword}" = ${match}`);
                     return match;
                 });
                 console.log(`Location filter: ${beforeCount} -> ${filteredHostels.length}`);
@@ -2433,7 +2849,6 @@
                             match = hostel.price >= 500000;
                             break;
                     }
-                    console.log(`Price: ${hostel.name} - ${hostel.price} matches ${priceFilter} = ${match}`);
                     return match;
                 });
                 console.log(`Price filter: ${beforeCount} -> ${filteredHostels.length}`);
@@ -2442,11 +2857,7 @@
             // Apply room type filter
             if (typeFilter) {
                 const beforeCount = filteredHostels.length;
-                filteredHostels = filteredHostels.filter(hostel => {
-                    const match = hostel.type === typeFilter;
-                    console.log(`Type: ${hostel.name} - ${hostel.type} === ${typeFilter} = ${match}`);
-                    return match;
-                });
+                filteredHostels = filteredHostels.filter(hostel => hostel.type === typeFilter);
                 console.log(`Type filter: ${beforeCount} -> ${filteredHostels.length}`);
             }
             
@@ -2455,7 +2866,6 @@
                 const beforeCount = filteredHostels.length;
                 filteredHostels = filteredHostels.filter(hostel => {
                     const hasAllAmenities = selectedAmenities.every(amenity => {
-                        // Map checkbox values to actual feature keywords
                         let featureKeyword = '';
                         switch(amenity) {
                             case 'wifi':
@@ -2480,49 +2890,140 @@
                         const hasAmenity = hostel.features.some(feature => 
                             feature.toLowerCase().includes(featureKeyword)
                         );
-                        console.log(`Amenity: ${hostel.name} - looking for "${featureKeyword}" in [${hostel.features.join(', ')}] = ${hasAmenity}`);
                         return hasAmenity;
                     });
-                    console.log(`All amenities: ${hostel.name} - ${hasAllAmenities}`);
                     return hasAllAmenities;
                 });
                 console.log(`Amenities filter: ${beforeCount} -> ${filteredHostels.length}`);
             }
             
             console.log(`Final result: ${filteredHostels.length} hostels`);
-            console.log('Filtered hostels:', filteredHostels.map(h => h.name));
             
             // Display results
             const targetGrid = page === 'hostels' ? 'all-hostel-grid' : 'featured-hostel-grid';
             displayHostels(filteredHostels, targetGrid);
         }
 
+        // Function to filter interiors
+        function filterInteriors(page) {
+            console.log('=== FILTERING INTERIORS ===');
+            
+            // Get filter values
+            const locationSelect = document.getElementById('interiors-location');
+            const priceSelect = document.getElementById('interiors-price-range');
+            const typeSelect = document.getElementById('interiors-type');
+            
+            const locationFilter = locationSelect ? locationSelect.value : '';
+            const priceFilter = priceSelect ? priceSelect.value : '';
+            const typeFilter = typeSelect ? typeSelect.value : '';
+            
+            // Get selected features from checkboxes
+            const featureCheckboxes = document.querySelectorAll('.feature-checkbox:checked');
+            const selectedFeatures = Array.from(featureCheckboxes).map(cb => cb.value);
+            
+            // Combine default and Firebase interiors
+            const allInteriors = firebaseInteriors;
+            let filteredInteriors = [...allInteriors];
+            
+            // Apply location filter
+            if (locationFilter) {
+                filteredInteriors = filteredInteriors.filter(interior => {
+                    let locationKeyword = '';
+                    switch(locationFilter) {
+                        case 'school-road':
+                            locationKeyword = 'school road';
+                            break;
+                        case 'westend':
+                            locationKeyword = 'westend';
+                            break;
+                        case 'safari':
+                            locationKeyword = 'safari';
+                            break;
+                        case 'dara':
+                            locationKeyword = 'dara';
+                            break;
+                        case 'baba-soja':
+                            locationKeyword = 'baba soja';
+                            break;
+                        default:
+                            locationKeyword = locationFilter;
+                    }
+                    return interior.location.toLowerCase().includes(locationKeyword);
+                });
+            }
+            
+            // Apply price filter
+            if (priceFilter) {
+                filteredInteriors = filteredInteriors.filter(interior => {
+                    let match = false;
+                    switch(priceFilter) {
+                        case '0-50000':
+                            match = interior.price < 50000;
+                            break;
+                        case '50000-100000':
+                            match = interior.price >= 50000 && interior.price < 100000;
+                            break;
+                        case '100000-200000':
+                            match = interior.price >= 100000 && interior.price < 200000;
+                            break;
+                        case '200000+':
+                            match = interior.price >= 200000;
+                            break;
+                    }
+                    return match;
+                });
+            }
+            
+            // Apply type filter
+            if (typeFilter) {
+                filteredInteriors = filteredInteriors.filter(interior => interior.type === typeFilter);
+            }
+            
+            // Apply features filter
+            if (selectedFeatures.length > 0) {
+                filteredInteriors = filteredInteriors.filter(interior => {
+                    const hasAllFeatures = selectedFeatures.every(feature => 
+                        interior.features.some(f => f.toLowerCase().includes(feature))
+                    );
+                    return hasAllFeatures;
+                });
+            }
+            
+            // Display results
+            displayInteriors(filteredInteriors, 'all-interiors-grid');
+        }
 
         // Function to clear all filters
         function clearFilters(page) {
-            // Clear location filter
-            document.getElementById(page === 'hostels' ? 'hostels-location' : 'location').value = '';
-            
-            // Clear price filter
-            document.getElementById(page === 'hostels' ? 'hostels-price-range' : 'price-range').value = '';
-            
-            // Clear room type filter
-            document.getElementById(page === 'hostels' ? 'hostels-room-type' : 'room-type').value = '';
-            
-            // Clear amenities checkboxes
-            document.querySelectorAll('.amenity-checkbox').forEach(checkbox => {
-                checkbox.checked = false;
-            });
-            
-            // Update amenities display
-            updateAmenitiesDisplay();
-            
-            // Reload all hostels
-            const allHostels = [...hostelData, ...firebaseHostels];
-            if (page === 'hostels') {
-                displayHostels(allHostels, 'all-hostel-grid');
-            } else {
-                displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+            if (page === 'hostels' || page === 'home') {
+                // Clear hostel filters
+                const locationId = page === 'hostels' ? 'hostels-location' : 'location';
+                const priceId = page === 'hostels' ? 'hostels-price-range' : 'price-range';
+                const typeId = page === 'hostels' ? 'hostels-room-type' : 'room-type';
+                
+                document.getElementById(locationId).value = '';
+                document.getElementById(priceId).value = '';
+                document.getElementById(typeId).value = '';
+                
+                document.querySelectorAll('.amenity-checkbox').forEach(checkbox => checkbox.checked = false);
+                updateAmenitiesDisplay();
+                
+                const allHostels = [...hostelData, ...firebaseHostels];
+                if (page === 'hostels') {
+                    displayHostels(allHostels, 'all-hostel-grid');
+                } else {
+                    displayHostels(hostelData.filter(h => h.featured), 'featured-hostel-grid');
+                }
+            } else if (page === 'interiors') {
+                // Clear interior filters
+                document.getElementById('interiors-location').value = '';
+                document.getElementById('interiors-price-range').value = '';
+                document.getElementById('interiors-type').value = '';
+                
+                document.querySelectorAll('.feature-checkbox').forEach(checkbox => checkbox.checked = false);
+                updateFeaturesDisplay();
+                
+                updateInteriorsDisplay();
             }
         }
 
@@ -2540,8 +3041,7 @@
                     preview.appendChild(img);
                     
                     // Store the image data
-                    const imageId = input.id;
-                    uploadedImages[imageId] = e.target.result;
+                    uploadedImages[input.id] = e.target.result;
                 }
                 
                 reader.readAsDataURL(input.files[0]);
@@ -2582,8 +3082,6 @@
                 return true;
             } catch (error) {
                 console.error('Firebase connection test failed:', error);
-                console.error('Error code:', error.code);
-                console.error('Error message:', error.message);
                 return false;
             }
         }
@@ -2597,9 +3095,9 @@
             const features = document.getElementById('hostel-features').value.split(',').map(f => f.trim());
             const whatsapp = document.getElementById('hostel-whatsapp').value;
             const youtube = document.getElementById('hostel-youtube').value;
-            const featured = true; // Firebase hostels are featured by default but only show on hostels page
+            const featured = true;
             
-            // Get uploaded images or use placeholder if none uploaded (only 2 images now)
+            // Get uploaded images or use placeholder
             const images = [
                 uploadedImages['hostel-image'] || 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
                 uploadedImages['hostel-image2'] || 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
@@ -2623,53 +3121,26 @@
                     // Check if user is signed in
                     const user = firebase.auth().currentUser;
                     if (!user) {
-                        alert('Please sign in first before adding hostels. Click "Sign In to Add Hostels" button.');
+                        alert('Please sign in first before adding hostels.');
                         return;
                     }
                     
-                    console.log('User is signed in:', user.email);
-                    console.log('Attempting to save hostel:', newHostel);
-                    
                     // Test Firebase connection first
-                    console.log('Testing Firebase connection...');
                     const connectionTest = await testFirebaseConnection();
                     if (!connectionTest) {
                         alert('Firebase connection test failed. Please check your internet connection and try again.');
                         return;
                     }
-                    console.log('Firebase connection test passed!');
                     
                     // Save to Firebase
                     await saveHostelToFirebase(newHostel);
                 
-                    // Reload hostels from Firebase to update the display
-                    await loadHostelsFromFirebase();
-                
                     // Clear the form
-                    document.getElementById('hostel-name').value = '';
-                    document.getElementById('hostel-location').value = '';
-                    document.getElementById('hostel-price').value = '';
-                    document.getElementById('hostel-features').value = '';
-                    document.getElementById('hostel-youtube').value = '';
+                    clearHostelForm();
                 
-                    // Clear image previews
-                    const previewIds = ['image-preview', 'image-preview2'];
-                    previewIds.forEach(id => {
-                        document.getElementById(id).innerHTML = '';
-                    });
-                    
-                    // Reset file inputs
-                    const fileInputs = ['hostel-image', 'hostel-image2'];
-                    fileInputs.forEach(id => {
-                        document.getElementById(id).value = '';
-                        uploadedImages[id] = null;
-                    });
-                
-                    alert('Hostel added successfully! It will appear on the Hostels page (not the landing page).');
+                    alert('Hostel added successfully! It will appear on the Hostels page.');
                 } catch (error) {
                     console.error('Error adding hostel:', error);
-                    console.error('Error details:', error.message);
-                    console.error('Error code:', error.code);
                     
                     let errorMessage = 'Error adding hostel. ';
                     if (error.code === 'permission-denied') {
@@ -2689,10 +3160,127 @@
             }
         }
 
+        // Function to clear hostel form
+        function clearHostelForm() {
+            document.getElementById('hostel-name').value = '';
+            document.getElementById('hostel-location').value = '';
+            document.getElementById('hostel-price').value = '';
+            document.getElementById('hostel-features').value = '';
+            document.getElementById('hostel-youtube').value = '';
+            
+            // Clear image previews
+            const previewIds = ['image-preview', 'image-preview2'];
+            previewIds.forEach(id => document.getElementById(id).innerHTML = '');
+            
+            // Reset file inputs
+            const fileInputs = ['hostel-image', 'hostel-image2'];
+            fileInputs.forEach(id => {
+                document.getElementById(id).value = '';
+                uploadedImages[id] = null;
+            });
+        }
+
+        // Function to add a new interior
+        async function addInterior() {
+            const name = document.getElementById('interior-name').value;
+            const location = document.getElementById('interior-location').value;
+            const price = parseInt(document.getElementById('interior-price').value);
+            const type = document.getElementById('interior-type').value;
+            const features = document.getElementById('interior-features').value.split(',').map(f => f.trim());
+            const whatsapp = document.getElementById('interior-whatsapp').value;
+            const youtube = document.getElementById('interior-youtube').value;
+            const featured = true;
+            
+            // Get uploaded images or use placeholder
+            const images = [
+                uploadedImages['interior-image'] || 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                uploadedImages['interior-image2'] || 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            ];
+            
+            if (name && location && price) {
+                const newInterior = {
+                    name,
+                    location,
+                    price,
+                    images,
+                    youtube,
+                    type,
+                    features,
+                    whatsapp,
+                    featured,
+                    createdAt: new Date().toISOString()
+                };
+                
+                try {
+                    // Check if user is signed in
+                    const user = firebase.auth().currentUser;
+                    if (!user) {
+                        alert('Please sign in first before adding interiors.');
+                        return;
+                    }
+                    
+                    // Test Firebase connection first
+                    const connectionTest = await testFirebaseConnection();
+                    if (!connectionTest) {
+                        alert('Firebase connection test failed. Please check your internet connection and try again.');
+                        return;
+                    }
+                    
+                    // Save to Firebase
+                    await saveInteriorToFirebase(newInterior);
+                
+                    // Clear the form
+                    clearInteriorForm();
+                
+                    alert('Interior added successfully! It will appear on the Interiors page.');
+                } catch (error) {
+                    console.error('Error adding interior:', error);
+                    
+                    let errorMessage = 'Error adding interior. ';
+                    if (error.code === 'permission-denied') {
+                        errorMessage += 'Permission denied. Please make sure you are signed in and have proper permissions.';
+                    } else if (error.code === 'unavailable') {
+                        errorMessage += 'Firebase service is unavailable. Please check your internet connection.';
+                    } else if (error.code === 'unauthenticated') {
+                        errorMessage += 'Please sign in first before adding interiors.';
+                    } else {
+                        errorMessage += `Error: ${error.message}`;
+                    }
+                    
+                    alert(errorMessage);
+                }
+            } else {
+                alert('Please fill in all required fields');
+            }
+        }
+
+        // Function to clear interior form
+        function clearInteriorForm() {
+            document.getElementById('interior-name').value = '';
+            document.getElementById('interior-location').value = '';
+            document.getElementById('interior-price').value = '';
+            document.getElementById('interior-features').value = '';
+            document.getElementById('interior-youtube').value = '';
+            
+            // Clear image previews
+            const previewIds = ['interior-image-preview', 'interior-image-preview2'];
+            previewIds.forEach(id => document.getElementById(id).innerHTML = '');
+            
+            // Reset file inputs
+            const fileInputs = ['interior-image', 'interior-image2'];
+            fileInputs.forEach(id => {
+                document.getElementById(id).value = '';
+                uploadedImages[id] = null;
+            });
+        }
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', async () => {
-            // Load hostels from Firebase (includes default hostels + Firebase hostels)
-            await loadHostelsFromFirebase();
+            // Set up real-time listener for hostels
+            loadHostelsFromFirebase();
+            
+            // Set up real-time listener for interiors
+            loadInteriorsFromFirebase();
             
             // Handle initial URL
             handleUrlChange();
@@ -2701,9 +3289,6 @@
             window.addEventListener('hashchange', handleUrlChange);
             window.addEventListener('popstate', handleUrlChange);
             
-            // Add event listeners for filters
-            document.querySelector('.filter-button').addEventListener('click', () => filterHostels('home'));
-            
             // Add event listener for search input
             document.getElementById('search-input').addEventListener('keyup', (e) => {
                 if (e.key === 'Enter') {
@@ -2711,10 +3296,12 @@
                 }
             });
             
-            // Add event listeners for amenity checkboxes
+            // Add event listeners for checkboxes
             document.addEventListener('change', (e) => {
                 if (e.target.classList.contains('amenity-checkbox')) {
                     updateAmenitiesDisplay();
+                } else if (e.target.classList.contains('feature-checkbox')) {
+                    updateFeaturesDisplay();
                 }
             });
             
@@ -2730,7 +3317,7 @@
                     cancelDelete();
                 }
                 
-                // Close amenities dropdowns when clicking outside
+                // Close dropdowns when clicking outside
                 if (!e.target.closest('.custom-dropdown')) {
                     const dropdowns = document.querySelectorAll('.dropdown-content');
                     const triggers = document.querySelectorAll('.dropdown-trigger');
